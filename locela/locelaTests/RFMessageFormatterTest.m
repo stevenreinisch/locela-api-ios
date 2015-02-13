@@ -76,12 +76,20 @@
     XCTAssertEqualObjects(@"Hello Klaus!", result);
 }
 
-- (void)testFormatPatternValuesTwoStrings
+- (void)testFormatPatternValuesTwoStringsInOrder
 {
     NSString *result = [self.sut formatPattern:@"Hello {0} you are {1}!"
                                         values:@[@"Klaus", @"awesome"]];
     
     XCTAssertEqualObjects(@"Hello Klaus you are awesome!", result);
+}
+
+- (void)testFormatPatternValuesTwoStringsNotInOrder
+{
+    NSString *result = [self.sut formatPattern:@"Hello {1} you are {0}!"
+                                        values:@[@"Klaus", @"awesome"]];
+    
+    XCTAssertEqualObjects(@"Hello awesome you are Klaus!", result);
 }
 
 #pragma mark - indexFromPlaceholder:

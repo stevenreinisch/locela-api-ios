@@ -40,40 +40,57 @@
 - (NSString *)formatPattern:(NSString *)pattern
                      values:(NSArray *)values
 {
-    NSError *error = NULL;
-    NSRegularExpressionOptions regexOptions = NSRegularExpressionCaseInsensitive;
-    NSString *regExpPattern = @"\\{\\d\\}";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regExpPattern
-                                                                           options:regexOptions
-                                                                             error:&error];
-    if (error)
-    {
-        NSLog(@"Couldn't create regex with given string and options");
-    }
-
-    __block NSString *formattedPattern = [pattern copy];
-
-    [regex enumerateMatchesInString:pattern
-                            options:0
-                              range:NSMakeRange(0, pattern.length)
-                         usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-
-         NSString *placeholder = [pattern substringWithRange:result.range];
-         NSInteger index = [self indexFromPlaceholder:placeholder];
-         if (0 <= index && index < [values count])
-         {
-             id value = values[index];
-             formattedPattern = [self replaceValue:value
-                                          inString:formattedPattern
-                                           inRange:result.range];
-
-         }
-     }];
-
-    return formattedPattern;
+    return [self replaceFirstPlaceholderInPattern:pattern
+                                      usingValues:values];
 }
 
 #pragma mark - private
+
+- (NSString *)replaceFirstPlaceholderInPattern:(NSString *)pattern
+                                   usingValues:(NSArray *)values
+{
+    NSError                    *error         = NULL;
+    NSRegularExpressionOptions regexOptions   = NSRegularExpressionCaseInsensitive;
+    NSString                   *regExpPattern = @"\\{\\d\\}";
+    NSRegularExpression        *regex         = [NSRegularExpression regularExpressionWithPattern:regExpPattern
+                                                                                          options:regexOptions
+                                                                                            error:&error];
+    if (error)
+    {
+        NSLog(@"Couldn't create regex with given string and options");
+        return pattern;
+    }
+
+    NSTextCheckingResult *match = [regex firstMatchInString:pattern
+                                                    options:0
+                                                      range:NSMakeRange(0, pattern.length)];
+
+    if (match)
+    {
+        NSString  *placeholder = [pattern substringWithRange:match.range];
+        NSInteger index        = [self indexFromPlaceholder:placeholder];
+
+        if (0 <= index && index < [values count])
+        {
+            id       value            = values[index];
+            NSString *replacedPattern = [self replaceValue:value
+                                                  inString:pattern
+                                                   inRange:match.range];
+
+            return [self replaceFirstPlaceholderInPattern:replacedPattern
+                                              usingValues:values];
+        }
+        else
+        {
+            return pattern;
+        }
+    }
+    else
+    {
+        return pattern;
+    }
+}
+
 
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder
 {
