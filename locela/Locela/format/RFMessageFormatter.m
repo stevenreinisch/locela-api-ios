@@ -5,6 +5,10 @@
 
 #import "RFMessageFormatter.h"
 
+#pragma mark - constants
+
+NSString *const kRFMessageFormatterErrorDomain = @"RFMessageFormatterError";
+
 #pragma mark - private
 
 @interface RFMessageFormatter ()
@@ -37,34 +41,47 @@
 
 #pragma mark -
 
-- (NSString *)formatPattern:(NSString *)pattern
-                     values:(NSArray *)values
+- (BOOL)formatPattern:(NSString *)pattern
+               values:(NSArray *)values
+               result:(NSString **)result
+                error:(NSError **)error
 {
     return [self replaceFirstPlaceholderInPattern:pattern
-                                      usingValues:values];
+                                      usingValues:values
+                                           result:result
+                                            error:error];
 }
 
 #pragma mark - private
 
-- (NSString *)replaceFirstPlaceholderInPattern:(NSString *)pattern
-                                   usingValues:(NSArray *)values
+- (BOOL)replaceFirstPlaceholderInPattern:(NSString *)pattern
+                             usingValues:(NSArray *)values
+                                  result:(NSString **)result
+                                   error:(NSError **)error
 {
-    NSError                    *error         = NULL;
-    NSRegularExpressionOptions regexOptions   = NSRegularExpressionCaseInsensitive;
-    NSString                   *regExpPattern = @"\\{\\d\\}";
-    NSRegularExpression        *regex         = [NSRegularExpression regularExpressionWithPattern:regExpPattern
-                                                                                          options:regexOptions
-                                                                                            error:&error];
-    if (error)
+    NSError                    *regexError   = NULL;
+    NSRegularExpressionOptions regexOptions  = NSRegularExpressionCaseInsensitive;
+    NSString                   *regExPattern = @"\\{\\d\\}";
+    NSRegularExpression        *regex        = [NSRegularExpression regularExpressionWithPattern:regExPattern
+                                                                                         options:regexOptions
+                                                                                           error:&regexError];
+    if (regexError)
     {
         NSLog(@"Couldn't create regex with given string and options");
-        return pattern;
+
+        *error = [NSError errorWithDomain:kRFMessageFormatterErrorDomain
+                                     code:RFMessageFormatterErrorCodeCannotCreateRegExp
+                                 userInfo:@{}];
+
+        return NO;
     }
 
     NSTextCheckingResult *match = [regex firstMatchInString:pattern
                                                     options:0
                                                       range:NSMakeRange(0, pattern.length)];
 
+    NSString *replacedPattern = [pattern copy];
+    
     if (match)
     {
         NSString  *placeholder = [pattern substringWithRange:match.range];
@@ -72,22 +89,29 @@
 
         if (0 <= index && index < [values count])
         {
-            id       value            = values[index];
-            NSString *replacedPattern = [self replaceValue:value
-                                                  inString:pattern
-                                                   inRange:match.range];
+            id       value  = values[index];
+            replacedPattern = [self replaceValue:value
+                                        inString:pattern
+                                         inRange:match.range];
 
             return [self replaceFirstPlaceholderInPattern:replacedPattern
-                                              usingValues:values];
+                                              usingValues:values
+                                                   result:result
+                                                    error:error];
         }
         else
         {
-            return pattern;
+            *error = [NSError errorWithDomain:kRFMessageFormatterErrorDomain
+                                         code:RFMessageFormatterErrorCodeNoValueAtIndex
+                                     userInfo:@{ @"index" : @(index) }];
+            
+            return NO;
         }
     }
     else
     {
-        return pattern;
+        *result = [NSString stringWithString:replacedPattern];
+        return YES;
     }
 }
 

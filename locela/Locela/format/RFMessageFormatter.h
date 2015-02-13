@@ -5,12 +5,24 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma mark - constants
+
+extern NSString *const kRFMessageFormatterErrorDomain;
+
+typedef NS_ENUM(NSUInteger, RFMessageFormatterErrorCode) {
+    RFMessageFormatterErrorCodeCannotCreateRegExp,
+    RFMessageFormatterErrorCodeNoValueAtIndex
+};
+
+#pragma mark -
 
 @interface RFMessageFormatter : NSObject
 
 - (instancetype)initWithLocale:(NSLocale *)locale NS_DESIGNATED_INITIALIZER;
 
-- (NSString *)formatPattern:(NSString *)pattern
-                     values:(NSArray *)values;
+- (BOOL)formatPattern:(NSString *)pattern
+               values:(NSArray *)values
+               result:(NSString **)result
+                error:(NSError **)error;
 
 @end

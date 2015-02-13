@@ -70,25 +70,44 @@
 
 - (void)testFormatPatternValuesOneString
 {
-    NSString *result = [self.sut formatPattern:@"Hello {0}!"
-                                        values:@[@"Klaus"]];
-
+    NSString *result = nil;
+    NSError  *error  = nil;
+    
+    BOOL isFormatted = [self.sut formatPattern:@"Hello {0}!"
+                                        values:@[@"Klaus"]
+                                        result:&result
+                                         error:&error];
+    
+    XCTAssertTrue(isFormatted);
+    
     XCTAssertEqualObjects(@"Hello Klaus!", result);
 }
 
 - (void)testFormatPatternValuesTwoStringsInOrder
 {
-    NSString *result = [self.sut formatPattern:@"Hello {0} you are {1}!"
-                                        values:@[@"Klaus", @"awesome"]];
-    
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    BOOL isFormatted = [self.sut formatPattern:@"Hello {0} you are {1}!"
+                                        values:@[@"Klaus", @"awesome"]
+                                        result:&result
+                                         error:&error];
+
+    XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Hello Klaus you are awesome!", result);
 }
 
 - (void)testFormatPatternValuesTwoStringsNotInOrder
 {
-    NSString *result = [self.sut formatPattern:@"Hello {1} you are {0}!"
-                                        values:@[@"Klaus", @"awesome"]];
+    NSString *result = nil;
+    NSError  *error  = nil;
     
+    BOOL isFormatted = [self.sut formatPattern:@"Hello {1} you are {0}!"
+                                        values:@[@"Klaus", @"awesome"]
+                                        result:&result
+                                         error:&error];
+    
+    XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Hello awesome you are Klaus!", result);
 }
 
