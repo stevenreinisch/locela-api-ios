@@ -35,4 +35,10 @@
     return self;
 }
 
+- (NSString *)formatPattern:(NSString *)pattern
+                     values:(id)firstValue, ...
+{
+    return nil;
+}
+
 @end

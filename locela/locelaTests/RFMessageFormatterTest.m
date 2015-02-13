@@ -52,4 +52,13 @@
     XCTAssertEqualObjects([NSLocale currentLocale], self.sut.locale, @"locale must be default locale if none is given");
 }
 
+- (void)testInitWithLocaleNotNil {
+
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
+
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
+
+    XCTAssertEqualObjects(locale, self.sut.locale, @"locale must match given locale");
+}
+
 @end
