@@ -54,25 +54,26 @@
         NSLog(@"Couldn't create regex with given string and options");
     }
 
+    __block NSString *formattedPattern = [pattern copy];
+
     [regex enumerateMatchesInString:pattern
                             options:0
                               range:NSMakeRange(0, pattern.length)
                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
 
-         NSString  *placeholder = [pattern substringWithRange:result.range];
-         NSInteger index        = [self indexFromPlaceholder:placeholder];
+         NSString *placeholder = [pattern substringWithRange:result.range];
+         NSInteger index = [self indexFromPlaceholder:placeholder];
          if (0 <= index && index < [values count])
          {
              id value = values[index];
+             formattedPattern = [self replaceValue:value
+                                          inString:formattedPattern
+                                           inRange:result.range];
 
          }
      }];
 
-    //search pattern for matches for {index}
-    //get index from match
-    //replace match with values[index]
-
-    return nil;
+    return formattedPattern;
 }
 
 #pragma mark - private

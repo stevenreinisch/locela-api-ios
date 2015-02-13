@@ -74,7 +74,7 @@
     NSString *result = [self.sut formatPattern:@"Hello {0}!"
                                         values:@"Klaus", nil];
 
-    XCTAssertEqualObjects(@"Hello Klaus", result);
+    XCTAssertEqualObjects(@"Hello Klaus!", result);
 }
 
 #pragma mark - values:
