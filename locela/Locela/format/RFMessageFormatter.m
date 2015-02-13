@@ -38,11 +38,8 @@
 #pragma mark -
 
 - (NSString *)formatPattern:(NSString *)pattern
-                     values:(id)firstValue, ...
+                     values:(NSArray *)values
 {
-
-    NSArray *values = [self values:firstValue];
-
     NSError *error = NULL;
     NSRegularExpressionOptions regexOptions = NSRegularExpressionCaseInsensitive;
     NSString *regExpPattern = @"\\{\\d\\}";
@@ -77,30 +74,6 @@
 }
 
 #pragma mark - private
-
-- (NSArray *)values:(id)firstValue, ...
-{
-    NSMutableArray *values = [[NSMutableArray alloc] init];//get from arg list
-
-    if (!firstValue)
-    {
-        return values;
-    }
-    
-    va_list args;
-    va_start(args, firstValue);
-
-    id value = firstValue;
-    do
-    {
-        [values addObject:value];
-    }
-    while( (value = va_arg(args, id)) );
-
-    va_end(args);
-
-    return values;
-}
 
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder
 {

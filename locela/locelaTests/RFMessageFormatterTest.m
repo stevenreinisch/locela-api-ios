@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) NSLocale *locale;
 
-- (NSArray *)values:(id)firstValue, ...;
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder;
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
@@ -72,30 +71,17 @@
 - (void)testFormatPatternValuesOneString
 {
     NSString *result = [self.sut formatPattern:@"Hello {0}!"
-                                        values:@"Klaus", nil];
+                                        values:@[@"Klaus"]];
 
     XCTAssertEqualObjects(@"Hello Klaus!", result);
 }
 
-#pragma mark - values:
-
-- (void)testValuesNoValue
+- (void)testFormatPatternValuesTwoStrings
 {
-    NSArray *values = [self.sut values:nil];
-
-    XCTAssertEqual([values count], 0);
-}
-
-- (void)testValuesMultipleValues
-{
-    id value1 = @"Foo";
-    id value2 = @(3);
-
-    NSArray *values = [self.sut values:value1, value2, nil];
+    NSString *result = [self.sut formatPattern:@"Hello {0} you are {1}!"
+                                        values:@[@"Klaus", @"awesome"]];
     
-    XCTAssertEqual([values count], 2);
-    XCTAssertEqualObjects(value1, values[0]);
-    XCTAssertEqualObjects(value2, values[1]);
+    XCTAssertEqualObjects(@"Hello Klaus you are awesome!", result);
 }
 
 #pragma mark - indexFromPlaceholder:
