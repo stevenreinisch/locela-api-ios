@@ -10,6 +10,7 @@
 		2EB08E2B1A8DDBBD00E72BB1 /* RFLocela.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2EB08E2A1A8DDBBD00E72BB1 /* RFLocela.h */; };
 		2EB08E2D1A8DDBBD00E72BB1 /* RFLocela.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB08E2C1A8DDBBD00E72BB1 /* RFLocela.m */; };
 		2EB08E331A8DDBBD00E72BB1 /* libLocela.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB08E271A8DDBBD00E72BB1 /* libLocela.a */; };
+		9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B23516930D46889874C4 /* NSNumberFormatterTest.m */; };
 		9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */; };
 		9040BE52988C7E9228C9A6C6 /* RFMessageFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B2958FB6CE505EAC956E /* RFMessageFormatterTest.m */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		2EB08E321A8DDBBD00E72BB1 /* LocelaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocelaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB08E381A8DDBBD00E72BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatter.m; sourceTree = "<group>"; };
+		9040B23516930D46889874C4 /* NSNumberFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterTest.m; sourceTree = "<group>"; };
 		9040B2958FB6CE505EAC956E /* RFMessageFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatterTest.m; sourceTree = "<group>"; };
 		9040B4CE4CC8F3374E6616F6 /* RFMessageFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMessageFormatter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB08E371A8DDBBD00E72BB1 /* Supporting Files */,
+				9040B23516930D46889874C4 /* NSNumberFormatterTest.m */,
 			);
 			path = LocelaTests;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9040BE52988C7E9228C9A6C6 /* RFMessageFormatterTest.m in Sources */,
+				9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
