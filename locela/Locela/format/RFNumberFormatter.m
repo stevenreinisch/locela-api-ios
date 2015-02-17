@@ -72,7 +72,13 @@
 
 - (NSString *)numberFormatFromPlaceholder:(NSString *)placeholder
 {
-    return nil;
+    NSRange numberRange          = [placeholder rangeOfString:@"number,"];
+    NSUInteger formatRangeStart  = numberRange.location + numberRange.length;
+    NSUInteger formatRangeLength = placeholder.length - formatRangeStart;
+    NSRange formatRange          = NSMakeRange(formatRangeStart, formatRangeLength - 1);
+    NSString *format             = [placeholder substringWithRange:formatRange];
+
+    return [format stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 - (NSString *)replaceValue:(id)value

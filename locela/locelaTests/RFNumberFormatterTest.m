@@ -44,6 +44,8 @@
 
 #pragma mark - tests
 
+#pragma mark - indexFromPlaceholder
+
 - (void)testIndexFromPlaceholder
 {
     NSString *placeholder = @"{12,number,0E0}";
@@ -53,5 +55,15 @@
     XCTAssertEqual(12, index);
 }
 
+#pragma mark - numberFormatFromPlaceholder
+
+- (void)testNumberFormatFromPlaceholder
+{
+    NSString *placeholder = @"{12, number, 0.00E0}";
+
+    NSString *format = [self.sut numberFormatFromPlaceholder:placeholder];
+
+    XCTAssertEqualObjects(@"0.00E0", format);
+}
 
 @end
