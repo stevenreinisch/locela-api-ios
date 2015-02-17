@@ -15,6 +15,7 @@
 		9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */; };
 		9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B4226A2AA2E3D691517F /* RFStringFormatterTest.m */; };
 		9040B8CB2DFB03BCBC3B781E /* RFValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BF19DBA018C7F2984AE1 /* RFValueFormatter.m */; };
+		9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B1B9AC3174567E7D09AF /* RFNumberFormatterTest.m */; };
 		9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B23516930D46889874C4 /* NSNumberFormatterTest.m */; };
 		9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		2EB08E381A8DDBBD00E72BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatterTest.m; sourceTree = "<group>"; };
 		9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatter.m; sourceTree = "<group>"; };
+		9040B1B9AC3174567E7D09AF /* RFNumberFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNumberFormatterTest.m; sourceTree = "<group>"; };
 		9040B23516930D46889874C4 /* NSNumberFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterTest.m; sourceTree = "<group>"; };
 		9040B3958B81DE494F05D38E /* RFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFStringFormatter.h; sourceTree = "<group>"; };
 		9040B3D6A543AC0892C41444 /* RFNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNumberFormatter.m; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				9040B23516930D46889874C4 /* NSNumberFormatterTest.m */,
 				9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */,
 				9040B4226A2AA2E3D691517F /* RFStringFormatterTest.m */,
+				9040B1B9AC3174567E7D09AF /* RFNumberFormatterTest.m */,
 			);
 			path = LocelaTests;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */,
 				9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */,
 				9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */,
+				9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

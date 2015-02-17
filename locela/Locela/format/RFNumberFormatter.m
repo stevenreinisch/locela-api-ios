@@ -46,7 +46,28 @@
 
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder
 {
-    return 0;
+    if (placeholder && ![@"" isEqualToString:placeholder])
+    {
+        NSRange commaRange    = [placeholder rangeOfString:@","];
+        NSRange range         = NSMakeRange(1, commaRange.location);
+        NSString *parsedIndex = [placeholder substringWithRange:range];
+        NSScanner *scanner    = [NSScanner scannerWithString:parsedIndex];
+        int scannedIndex      = -1;
+        BOOL isInt            = [scanner scanInt:&scannedIndex];
+
+        if (isInt)
+        {
+            return scannedIndex;
+        }
+        else
+        {
+            return NSIntegerMin;
+        }
+    }
+    else
+    {
+        return NSIntegerMin;
+    }
 }
 
 - (NSString *)numberFormatFromPlaceholder:(NSString *)placeholder
