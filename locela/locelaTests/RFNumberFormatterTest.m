@@ -15,6 +15,10 @@
 
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder;
 - (NSString *)numberFormatFromPlaceholder:(NSString *)placeholder;
+- (NSString *)replaceValue:(id)value
+                  inString:(NSString *)string
+                   inRange:(NSRange)range
+              numberFormat:(NSString *)numberFormat;
 
 @end
 
@@ -25,6 +29,8 @@
 @property (nonatomic, strong)RFNumberFormatter *sut;
 
 @end
+
+#pragma mark -
 
 @implementation RFNumberFormatterTest
 
@@ -59,11 +65,28 @@
 
 - (void)testNumberFormatFromPlaceholder
 {
-    NSString *placeholder = @"{12, number, 0.00E0}";
+    NSString *placeholder = @"{12, number, 0.00E0 }";
 
     NSString *format = [self.sut numberFormatFromPlaceholder:placeholder];
 
     XCTAssertEqualObjects(@"0.00E0", format);
+}
+
+#pragma mark - replaceValue:inString:inRange:numberFormat
+
+- (void)testReplaceValueInStringInRangeNumberFormat
+{
+    NSString *string = @"Amount: X";
+    NSNumber *value  = @(1235);
+    NSRange  range   = NSMakeRange(string.length - 1, 1);
+    NSString *format = @"0.00E0";
+    
+    NSString *replaced = [self.sut replaceValue:value
+                                    inString:string
+                                        inRange:range
+                                   numberFormat:format];
+    
+    XCTAssertEqualObjects(@"Amount: 1.24E3", replaced);
 }
 
 @end
