@@ -11,7 +11,8 @@ extern NSString *const kRFMessageFormatterErrorDomain;
 
 typedef NS_ENUM(NSUInteger, RFMessageFormatterErrorCode) {
     RFMessageFormatterErrorCodeCannotCreateRegExp,
-    RFMessageFormatterErrorCodeNoValueAtIndex
+    RFMessageFormatterErrorCodeNoValueAtIndex,
+    RFMessageFormatterErrorCodeNoMatchingFormatter
 };
 
 #pragma mark -
