@@ -59,7 +59,7 @@
 
 #pragma mark - replaceValue:inString:inRange:dateFormat
 
-- (void)testReplaceValueInStringInRangeDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatNoDateFormat
 {
     NSString *string = @"Heute ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
