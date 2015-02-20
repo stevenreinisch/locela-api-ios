@@ -11,6 +11,7 @@
 #import "RFStringFormatter.h"
 #import "RFNumberFormatter.h"
 #import "RFDateFormatter.h"
+#import "RFTimeFormatter.h"
 
 #pragma mark - private forward declarations
 
@@ -81,6 +82,9 @@
 
     Class dateFormatterClass = [self.sut.formatterClasses objectForKey:kRFMessageFormatterDatePlaceholderPattern];
     XCTAssertEqualObjects([RFDateFormatter class], dateFormatterClass);
+
+    Class timeFormatterClass = [self.sut.formatterClasses objectForKey:kRFMessageFormatterTimePlaceholderPattern];
+    XCTAssertEqualObjects([RFTimeFormatter class], timeFormatterClass);
 }
 
 #pragma mark - formatPattern:values

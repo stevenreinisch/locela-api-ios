@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "RFDateFormatter.h"
+#import "RFTimeFormatter.h"
 
 #pragma mark - private declarations
 
-@interface RFDateFormatter (Testing)
+@interface RFTimeFormatter (Testing)
 
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
@@ -22,23 +22,23 @@
 
 #pragma mark -
 
-@interface RFDateFormatterTest : XCTestCase
+@interface RFTimeFormatterTest : XCTestCase
 
-@property (nonatomic, strong) RFDateFormatter *sut;
+@property (nonatomic, strong) RFTimeFormatter *sut;
 @property (nonatomic, strong) NSDate          *date;
 
 @end
 
 #pragma mark -
 
-@implementation RFDateFormatterTest
+@implementation RFTimeFormatterTest
 
 - (void)setUp
 {
     [super setUp];
 
     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
-    self.sut         = [[RFDateFormatter alloc] initWithLocale:locale];
+    self.sut         = [[RFTimeFormatter alloc] initWithLocale:locale];
 
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:1];
@@ -62,9 +62,9 @@
 
 #pragma mark - replaceValue:inString:inRange:dateFormat
 
-- (void)testReplaceValueInStringInRangeDateFormatNoDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatTimeFormat
 {
-    NSString *string = @"Heute ist X";
+    NSString *string = @"Jetzt ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
     NSString *format = @"";
 
@@ -73,12 +73,12 @@
                                         inRange:range
                                      dateFormat:format];
 
-    XCTAssertEqualObjects(@"Heute ist 01.10.2010", replaced);
+    XCTAssertEqualObjects(@"Jetzt ist 09:15:02", replaced);
 }
 
-- (void)testReplaceValueInStringInRangeDateFormatShortDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatShortTimeFormat
 {
-    NSString *string = @"Heute ist X";
+    NSString *string = @"Jetzt ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
     NSString *format = @"short";
 
@@ -87,12 +87,12 @@
                                         inRange:range
                                      dateFormat:format];
 
-    XCTAssertEqualObjects(@"Heute ist 01.10.10", replaced);
+    XCTAssertEqualObjects(@"Jetzt ist 09:15", replaced);
 }
 
-- (void)testReplaceValueInStringInRangeDateFormatMediumDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatMediumTimeFormat
 {
-    NSString *string = @"Heute ist X";
+    NSString *string = @"Jetzt ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
     NSString *format = @"medium";
 
@@ -101,12 +101,12 @@
                                         inRange:range
                                      dateFormat:format];
 
-    XCTAssertEqualObjects(@"Heute ist 01.10.2010", replaced);
+    XCTAssertEqualObjects(@"Jetzt ist 09:15:02", replaced);
 }
 
-- (void)testReplaceValueInStringInRangeDateFormatLongDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatLongTimeFormat
 {
-    NSString *string = @"Heute ist X";
+    NSString *string = @"Jetzt ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
     NSString *format = @"long";
 
@@ -115,12 +115,12 @@
                                         inRange:range
                                      dateFormat:format];
 
-    XCTAssertEqualObjects(@"Heute ist 1. Oktober 2010", replaced);
+    XCTAssertEqualObjects(@"Jetzt ist 09:15:02 MESZ", replaced);
 }
 
-- (void)testReplaceValueInStringInRangeDateFormatFullDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatFullTimeFormat
 {
-    NSString *string = @"Heute ist X";
+    NSString *string = @"Jetzt ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
     NSString *format = @"full";
 
@@ -129,21 +129,21 @@
                                         inRange:range
                                      dateFormat:format];
 
-    XCTAssertEqualObjects(@"Heute ist Freitag, 1. Oktober 2010", replaced);
+    XCTAssertEqualObjects(@"Jetzt ist 09:15 Uhr MESZ", replaced);
 }
 
-- (void)testReplaceValueInStringInRangeDateFormatStringDateFormat
+- (void)testReplaceValueInStringInRangeDateFormatCustomTimeFormat
 {
-    NSString *string = @"Heute ist X";
+    NSString *string = @"Jetzt ist X";
     NSRange  range   = NSMakeRange(string.length - 1, 1);
-    NSString *format = @"yyyy-MM-dd";
+    NSString *format = @"HH:mm:ss";
 
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
                                      dateFormat:format];
 
-    XCTAssertEqualObjects(@"Heute ist 2010-10-01", replaced);
+    XCTAssertEqualObjects(@"Jetzt ist 09:15:02", replaced);
 }
 
 @end

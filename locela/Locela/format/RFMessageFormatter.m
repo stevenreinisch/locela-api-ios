@@ -8,6 +8,7 @@
 #import "RFNumberFormatter.h"
 #import "RFValueFormatter.h"
 #import "RFDateFormatter.h"
+#import "RFTimeFormatter.h"
 
 #pragma mark - constants
 
@@ -15,7 +16,8 @@ NSString *const kRFMessageFormatterErrorDomain = @"RFMessageFormatterError";
 
 NSString *const kRFMessageFormatterSimplePlaceholderPattern = @"\\{\\d\\}";
 NSString *const kRFMessageFormatterNumberPlaceholderPattern = @"\\{\\d,\s*number,\s*.+\\}";
-NSString *const kRFMessageFormatterDatePlaceholderPattern   = @"\\{\\d,\s*(date|time|datetime)(,\s*.+)?\\}";
+NSString *const kRFMessageFormatterDatePlaceholderPattern   = @"\\{\\d,\s*date(,\s*.+)?\\}";
+NSString *const kRFMessageFormatterTimePlaceholderPattern   = @"\\{\\d,\s*time(,\s*.+)?\\}";
 
 #pragma mark - private
 
@@ -53,7 +55,8 @@ NSString *const kRFMessageFormatterDatePlaceholderPattern   = @"\\{\\d,\s*(date|
         _formatterClasses = @{
                 kRFMessageFormatterSimplePlaceholderPattern : [RFStringFormatter class],
                 kRFMessageFormatterNumberPlaceholderPattern : [RFNumberFormatter class],
-                kRFMessageFormatterDatePlaceholderPattern   : [RFDateFormatter class]
+                kRFMessageFormatterDatePlaceholderPattern   : [RFDateFormatter class],
+                kRFMessageFormatterTimePlaceholderPattern   : [RFTimeFormatter class]
         };
     }
     return self;

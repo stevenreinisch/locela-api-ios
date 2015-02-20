@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, RFMessageFormatterErrorCode) {
 extern NSString *const kRFMessageFormatterSimplePlaceholderPattern;
 extern NSString *const kRFMessageFormatterNumberPlaceholderPattern;
 extern NSString *const kRFMessageFormatterDatePlaceholderPattern;
+extern NSString *const kRFMessageFormatterTimePlaceholderPattern;
 
 #pragma mark -
 

@@ -140,7 +140,7 @@
 
     if (kCFDateFormatterNoStyle != style)
     {
-        [dateFormatter setDateStyle:style];
+        [self setStyle:style  forFormatter:dateFormatter];
     }
 
     NSString *formattedDate = [dateFormatter stringFromDate:value];
@@ -148,6 +148,11 @@
     [mutable replaceCharactersInRange:range withString:formattedDate];
 
     return [NSString stringWithString:mutable];
+}
+
+- (void)setStyle:(NSDateFormatterStyle)style forFormatter:(NSDateFormatter *)formatter
+{
+    [formatter setDateStyle:style];
 }
 
 @end

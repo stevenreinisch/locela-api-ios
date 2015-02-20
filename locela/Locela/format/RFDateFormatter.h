@@ -11,4 +11,8 @@
 
 - (instancetype)initWithLocale:(NSLocale *)locale NS_DESIGNATED_INITIALIZER;
 
+#pragma mark - protected
+
+- (void)setStyle:(NSDateFormatterStyle)style forFormatter:(NSDateFormatter *)formatter;
+
 @end
