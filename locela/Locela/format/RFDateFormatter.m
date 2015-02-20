@@ -121,6 +121,10 @@
     {
         style = kCFDateFormatterShortStyle;
     }
+    else if (!dateFormat || [@"long" isEqualToString:dateFormat])
+    {
+        style = kCFDateFormatterLongStyle;
+    }
 
     [dateFormatter setDateStyle:style];
 
