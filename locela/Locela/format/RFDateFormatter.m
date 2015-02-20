@@ -110,8 +110,17 @@
     NSMutableString *mutable = [NSMutableString stringWithString:string];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = self.locale;
+    dateFormatter.locale           = self.locale;
     NSDateFormatterStyle style     = kCFDateFormatterMediumStyle;
+
+    if (!dateFormat || [@"" isEqualToString:dateFormat])
+    {
+        style = kCFDateFormatterMediumStyle;
+    }
+    else if (!dateFormat || [@"short" isEqualToString:dateFormat])
+    {
+        style = kCFDateFormatterShortStyle;
+    }
 
     [dateFormatter setDateStyle:style];
 
