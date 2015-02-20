@@ -8,6 +8,9 @@
 
 #import <XCTest/XCTest.h>
 #import "RFMessageFormatter.h"
+#import "RFStringFormatter.h"
+#import "RFNumberFormatter.h"
+#import "RFDateFormatter.h"
 
 #pragma mark - private forward declarations
 
@@ -62,6 +65,22 @@
 
     XCTAssertEqualObjects(locale, self.sut.locale, @"locale must match given locale");
     XCTAssertNotNil(self.sut.formatterClasses);
+}
+
+#pragma mark - formatterClasses
+
+- (void)testFormatterClassesAreCreated
+{
+    XCTAssertNotNil(self.sut.formatterClasses);
+
+    Class stringFormatterClass = [self.sut.formatterClasses objectForKey:kRFMessageFormatterSimplePlaceholderPattern];
+    XCTAssertEqualObjects([RFStringFormatter class], stringFormatterClass);
+
+    Class numberFormatterClass = [self.sut.formatterClasses objectForKey:kRFMessageFormatterNumberPlaceholderPattern];
+    XCTAssertEqualObjects([RFNumberFormatter class], numberFormatterClass);
+
+    Class dateFormatterClass = [self.sut.formatterClasses objectForKey:kRFMessageFormatterDatePlaceholderPattern];
+    XCTAssertEqualObjects([RFDateFormatter class], dateFormatterClass);
 }
 
 #pragma mark - formatPattern:values

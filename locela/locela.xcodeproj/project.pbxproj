@@ -18,6 +18,7 @@
 		9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B1B9AC3174567E7D09AF /* RFNumberFormatterTest.m */; };
 		9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B23516930D46889874C4 /* NSNumberFormatterTest.m */; };
 		9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */; };
+		9040BFE2FCB8DFF48246EB34 /* RFDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B7FDEDDC0C6D8E043B8D /* RFDateFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,9 @@
 		9040B53AA8F8C99A02006477 /* RFNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNumberFormatter.h; sourceTree = "<group>"; };
 		9040B561339F289BEEEDE61E /* RFStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFStringFormatter.m; sourceTree = "<group>"; };
 		9040B7F42BBAD599AEAFFED1 /* RFValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFValueFormatter.h; sourceTree = "<group>"; };
+		9040B7FDEDDC0C6D8E043B8D /* RFDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDateFormatter.m; sourceTree = "<group>"; };
 		9040BF19DBA018C7F2984AE1 /* RFValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFValueFormatter.m; sourceTree = "<group>"; };
+		9040BF43F6B72DCE06BD398B /* RFDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDateFormatter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				9040B7F42BBAD599AEAFFED1 /* RFValueFormatter.h */,
 				9040B3D6A543AC0892C41444 /* RFNumberFormatter.m */,
 				9040B53AA8F8C99A02006477 /* RFNumberFormatter.h */,
+				9040B7FDEDDC0C6D8E043B8D /* RFDateFormatter.m */,
+				9040BF43F6B72DCE06BD398B /* RFDateFormatter.h */,
 			);
 			path = format;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				9040B0A6A05A8B06B140B97F /* RFStringFormatter.m in Sources */,
 				9040B8CB2DFB03BCBC3B781E /* RFValueFormatter.m in Sources */,
 				9040B38BF42C65176453230B /* RFNumberFormatter.m in Sources */,
+				9040BFE2FCB8DFF48246EB34 /* RFDateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

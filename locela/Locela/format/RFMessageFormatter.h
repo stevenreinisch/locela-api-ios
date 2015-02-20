@@ -15,6 +15,10 @@ typedef NS_ENUM(NSUInteger, RFMessageFormatterErrorCode) {
     RFMessageFormatterErrorCodeNoMatchingFormatter
 };
 
+extern NSString *const kRFMessageFormatterSimplePlaceholderPattern;
+extern NSString *const kRFMessageFormatterNumberPlaceholderPattern;
+extern NSString *const kRFMessageFormatterDatePlaceholderPattern;
+
 #pragma mark -
 
 @interface RFMessageFormatter : NSObject
