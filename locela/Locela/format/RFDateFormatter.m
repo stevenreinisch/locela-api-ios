@@ -111,7 +111,7 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale           = self.locale;
-    NSDateFormatterStyle style     = kCFDateFormatterMediumStyle;
+    NSDateFormatterStyle style     = kCFDateFormatterNoStyle;
 
     if (!dateFormat || [@"" isEqualToString:dateFormat])
     {
@@ -121,6 +121,10 @@
     {
         style = kCFDateFormatterShortStyle;
     }
+    else if (!dateFormat || [@"medium" isEqualToString:dateFormat])
+    {
+        style = kCFDateFormatterMediumStyle;
+    }
     else if (!dateFormat || [@"long" isEqualToString:dateFormat])
     {
         style = kCFDateFormatterLongStyle;
@@ -129,8 +133,15 @@
     {
         style = kCFDateFormatterFullStyle;
     }
+    else
+    {
+        [dateFormatter setDateFormat:dateFormat];
+    }
 
-    [dateFormatter setDateStyle:style];
+    if (kCFDateFormatterNoStyle != style)
+    {
+        [dateFormatter setDateStyle:style];
+    }
 
     NSString *formattedDate = [dateFormatter stringFromDate:value];
 
