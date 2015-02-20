@@ -142,4 +142,18 @@
     XCTAssertEqualObjects(@"Please Pay $1.50!", result);
 }
 
+- (void)testFormatPatternValuesWithCurrencyAndString
+{
+    NSString *result = nil;
+    NSError  *error  = nil;
+    
+    BOOL isFormatted = [self.sut formatPattern:@"{0} please pay {1,number,¤0.00}!"
+                                        values:@[@"Dieter", @(1.5)]
+                                        result:&result
+                                         error:&error];
+    
+    XCTAssertTrue(isFormatted);
+    XCTAssertEqualObjects(@"Dieter please pay $1.50!", result);
+}
+
 @end

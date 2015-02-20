@@ -86,7 +86,15 @@
                    inRange:(NSRange)range
               numberFormat:(NSString *)numberFormat
 {
-    return nil;
+    NSMutableString *mutable = [NSMutableString stringWithString:string];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setPositiveFormat:numberFormat];
+    
+    NSString *valueString = [formatter stringFromNumber:value];
+    [mutable replaceCharactersInRange:range withString:valueString];
+    
+    return [NSString stringWithString:mutable];
 }
 
 @end
