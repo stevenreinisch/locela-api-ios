@@ -109,7 +109,15 @@
 {
     NSMutableString *mutable = [NSMutableString stringWithString:string];
 
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = self.locale;
+    NSDateFormatterStyle style     = kCFDateFormatterMediumStyle;
 
+    [dateFormatter setDateStyle:style];
+
+    NSString *formattedDate = [dateFormatter stringFromDate:value];
+
+    [mutable replaceCharactersInRange:range withString:formattedDate];
 
     return [NSString stringWithString:mutable];
 }
