@@ -115,4 +115,18 @@
     XCTAssertEqualObjects(@"Heute ist 1. Oktober 2010", replaced);
 }
 
+- (void)testReplaceValueInStringInRangeDateFormatFullDateFormat
+{
+    NSString *string = @"Heute ist X";
+    NSRange  range   = NSMakeRange(string.length - 1, 1);
+    NSString *format = @"full";
+
+    NSString *replaced = [self.sut replaceValue:self.date
+                                       inString:string
+                                        inRange:range
+                                     dateFormat:format];
+
+    XCTAssertEqualObjects(@"Heute ist Freitag, 1. Oktober 2010", replaced);
+}
+
 @end

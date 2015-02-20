@@ -125,6 +125,10 @@
     {
         style = kCFDateFormatterLongStyle;
     }
+    else if (!dateFormat || [@"full" isEqualToString:dateFormat])
+    {
+        style = kCFDateFormatterFullStyle;
+    }
 
     [dateFormatter setDateStyle:style];
 
