@@ -15,7 +15,7 @@ NSString *const kRFMessageFormatterErrorDomain = @"RFMessageFormatterError";
 
 NSString *const kRFMessageFormatterSimplePlaceholderPattern = @"\\{\\d\\}";
 NSString *const kRFMessageFormatterNumberPlaceholderPattern = @"\\{\\d,\s*number,\s*.+\\}";
-NSString *const kRFMessageFormatterDatePlaceholderPattern   = @"\\{\\d,\s*(date|time|datetime),\s*.+\\}";
+NSString *const kRFMessageFormatterDatePlaceholderPattern   = @"\\{\\d,\s*(date|time|datetime)(,\s*.+)?\\}";
 
 #pragma mark - private
 

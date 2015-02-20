@@ -8,4 +8,7 @@
 
 
 @interface RFDateFormatter : RFValueFormatter
+
+- (instancetype)initWithLocale:(NSLocale *)locale NS_DESIGNATED_INITIALIZER;
+
 @end

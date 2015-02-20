@@ -142,18 +142,41 @@
     XCTAssertEqualObjects(@"Please Pay $1.50!", result);
 }
 
-- (void)testFormatPatternValuesWithCurrencyAndString
-{
+- (void)testFormatPatternValuesWithCurrencyAndString {
     NSString *result = nil;
-    NSError  *error  = nil;
-    
+    NSError *error = nil;
+
     BOOL isFormatted = [self.sut formatPattern:@"{0} please pay {1,number,¤0.00}!"
                                         values:@[@"Dieter", @(1.5)]
                                         result:&result
                                          error:&error];
-    
+
     XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Dieter please pay $1.50!", result);
+}
+
+- (void)testFormatPatternValuesWithDate
+{
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
+
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:10];
+    [comps setYear:2010];
+    NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:comps];
+
+    //call sut
+    BOOL isFormatted = [self.sut formatPattern:@"Heute ist {0,date}."
+                                        values:@[date]
+                                        result:&result
+                                         error:&error];
+
+    XCTAssertTrue(isFormatted);
+    XCTAssertEqualObjects(@"Heute ist 01.10.2010.", result);
 }
 
 @end
