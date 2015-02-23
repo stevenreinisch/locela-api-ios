@@ -9,15 +9,17 @@
 #import "RFValueFormatter.h"
 #import "RFDateFormatter.h"
 #import "RFTimeFormatter.h"
+#import "RFDatetimeFormatter.h"
 
 #pragma mark - constants
 
 NSString *const kRFMessageFormatterErrorDomain = @"RFMessageFormatterError";
 
-NSString *const kRFMessageFormatterSimplePlaceholderPattern = @"\\{\\d\\}";
-NSString *const kRFMessageFormatterNumberPlaceholderPattern = @"\\{\\d,\s*number,\s*.+\\}";
-NSString *const kRFMessageFormatterDatePlaceholderPattern   = @"\\{\\d,\s*date(,\s*.+)?\\}";
-NSString *const kRFMessageFormatterTimePlaceholderPattern   = @"\\{\\d,\s*time(,\s*.+)?\\}";
+NSString *const kRFMessageFormatterSimplePlaceholderPattern   = @"\\{\\d\\}";
+NSString *const kRFMessageFormatterNumberPlaceholderPattern   = @"\\{\\d,\s*number,\s*.+\\}";
+NSString *const kRFMessageFormatterDatePlaceholderPattern     = @"\\{\\d,\s*date(,\s*.+)?\\}";
+NSString *const kRFMessageFormatterTimePlaceholderPattern     = @"\\{\\d,\s*time(,\s*.+)?\\}";
+NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*datetime(,\s*.+)?\\}";
 
 #pragma mark - private
 
@@ -53,10 +55,11 @@ NSString *const kRFMessageFormatterTimePlaceholderPattern   = @"\\{\\d,\s*time(,
         }
 
         _formatterClasses = @{
-                kRFMessageFormatterSimplePlaceholderPattern : [RFStringFormatter class],
-                kRFMessageFormatterNumberPlaceholderPattern : [RFNumberFormatter class],
-                kRFMessageFormatterDatePlaceholderPattern   : [RFDateFormatter class],
-                kRFMessageFormatterTimePlaceholderPattern   : [RFTimeFormatter class]
+                kRFMessageFormatterSimplePlaceholderPattern   : [RFStringFormatter class],
+                kRFMessageFormatterNumberPlaceholderPattern   : [RFNumberFormatter class],
+                kRFMessageFormatterDatePlaceholderPattern     : [RFDateFormatter class],
+                kRFMessageFormatterTimePlaceholderPattern     : [RFTimeFormatter class],
+                kRFMessageFormatterDatetimePlaceholderPattern : [RFDatetimeFormatter class]
         };
     }
     return self;
