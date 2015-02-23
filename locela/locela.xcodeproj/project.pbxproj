@@ -12,6 +12,7 @@
 		2EB08E331A8DDBBD00E72BB1 /* libLocela.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB08E271A8DDBBD00E72BB1 /* libLocela.a */; };
 		9040B0A653DCDF95DD0234D1 /* RFTimeFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B54F8B97997B321A9DA1 /* RFTimeFormatterTest.m */; };
 		9040B0A6A05A8B06B140B97F /* RFStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B561339F289BEEEDE61E /* RFStringFormatter.m */; };
+		9040B116C7C67BFC238B4EF3 /* RFDatetimeFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B3CD11D1F9BCF88C0742 /* RFDatetimeFormatterTest.m */; };
 		9040B38BF42C65176453230B /* RFNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B3D6A543AC0892C41444 /* RFNumberFormatter.m */; };
 		9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */; };
 		9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B4226A2AA2E3D691517F /* RFStringFormatterTest.m */; };
@@ -20,6 +21,7 @@
 		9040B9458BA6A8A443720F72 /* RFTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BAED19B7927FF4D4570D /* RFTimeFormatter.m */; };
 		9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B23516930D46889874C4 /* NSNumberFormatterTest.m */; };
 		9040BA852955E70E870550F3 /* RFDateFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B2FA492447029F02460F /* RFDateFormatterTest.m */; };
+		9040BC79DCDCC8DF315114AC /* RFDatetimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BB8288A24724DB6E2F24 /* RFDatetimeFormatter.m */; };
 		9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */; };
 		9040BFE2FCB8DFF48246EB34 /* RFDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B7FDEDDC0C6D8E043B8D /* RFDateFormatter.m */; };
 /* End PBXBuildFile section */
@@ -55,11 +57,13 @@
 		2EB08E381A8DDBBD00E72BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatterTest.m; sourceTree = "<group>"; };
 		9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatter.m; sourceTree = "<group>"; };
+		9040B160463FB93CE1C5921C /* RFDatetimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDatetimeFormatter.h; sourceTree = "<group>"; };
 		9040B1B9AC3174567E7D09AF /* RFNumberFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNumberFormatterTest.m; sourceTree = "<group>"; };
 		9040B23516930D46889874C4 /* NSNumberFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterTest.m; sourceTree = "<group>"; };
 		9040B2FA492447029F02460F /* RFDateFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDateFormatterTest.m; sourceTree = "<group>"; };
 		9040B33892E97EA9AC08BC1F /* RFTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFTimeFormatter.h; sourceTree = "<group>"; };
 		9040B3958B81DE494F05D38E /* RFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFStringFormatter.h; sourceTree = "<group>"; };
+		9040B3CD11D1F9BCF88C0742 /* RFDatetimeFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDatetimeFormatterTest.m; sourceTree = "<group>"; };
 		9040B3D6A543AC0892C41444 /* RFNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNumberFormatter.m; sourceTree = "<group>"; };
 		9040B4226A2AA2E3D691517F /* RFStringFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFStringFormatterTest.m; sourceTree = "<group>"; };
 		9040B4CE4CC8F3374E6616F6 /* RFMessageFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMessageFormatter.h; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 		9040B7F42BBAD599AEAFFED1 /* RFValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFValueFormatter.h; sourceTree = "<group>"; };
 		9040B7FDEDDC0C6D8E043B8D /* RFDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDateFormatter.m; sourceTree = "<group>"; };
 		9040BAED19B7927FF4D4570D /* RFTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTimeFormatter.m; sourceTree = "<group>"; };
+		9040BB8288A24724DB6E2F24 /* RFDatetimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDatetimeFormatter.m; sourceTree = "<group>"; };
 		9040BF19DBA018C7F2984AE1 /* RFValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFValueFormatter.m; sourceTree = "<group>"; };
 		9040BF43F6B72DCE06BD398B /* RFDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDateFormatter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +135,7 @@
 				9040B1B9AC3174567E7D09AF /* RFNumberFormatterTest.m */,
 				9040B2FA492447029F02460F /* RFDateFormatterTest.m */,
 				9040B54F8B97997B321A9DA1 /* RFTimeFormatterTest.m */,
+				9040B3CD11D1F9BCF88C0742 /* RFDatetimeFormatterTest.m */,
 			);
 			path = LocelaTests;
 			sourceTree = "<group>";
@@ -157,6 +163,8 @@
 				9040BF43F6B72DCE06BD398B /* RFDateFormatter.h */,
 				9040BAED19B7927FF4D4570D /* RFTimeFormatter.m */,
 				9040B33892E97EA9AC08BC1F /* RFTimeFormatter.h */,
+				9040BB8288A24724DB6E2F24 /* RFDatetimeFormatter.m */,
+				9040B160463FB93CE1C5921C /* RFDatetimeFormatter.h */,
 			);
 			path = format;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				9040B38BF42C65176453230B /* RFNumberFormatter.m in Sources */,
 				9040BFE2FCB8DFF48246EB34 /* RFDateFormatter.m in Sources */,
 				9040B9458BA6A8A443720F72 /* RFTimeFormatter.m in Sources */,
+				9040BC79DCDCC8DF315114AC /* RFDatetimeFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +278,7 @@
 				9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */,
 				9040BA852955E70E870550F3 /* RFDateFormatterTest.m in Sources */,
 				9040B0A653DCDF95DD0234D1 /* RFTimeFormatterTest.m in Sources */,
+				9040B116C7C67BFC238B4EF3 /* RFDatetimeFormatterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
