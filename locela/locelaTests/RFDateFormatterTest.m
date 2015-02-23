@@ -16,7 +16,7 @@
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
                    inRange:(NSRange)range
-                dateFormat:(NSString *)dateFormat;
+                    format:(NSString *)format;
 
 @end
 
@@ -71,7 +71,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Heute ist 01.10.2010", replaced);
 }
@@ -85,7 +85,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Heute ist 01.10.10", replaced);
 }
@@ -99,7 +99,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Heute ist 01.10.2010", replaced);
 }
@@ -113,7 +113,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Heute ist 1. Oktober 2010", replaced);
 }
@@ -127,7 +127,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Heute ist Freitag, 1. Oktober 2010", replaced);
 }
@@ -141,7 +141,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Heute ist 2010-10-01", replaced);
 }

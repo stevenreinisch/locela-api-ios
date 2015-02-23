@@ -115,7 +115,7 @@ NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*date
             return NO;
         }
 
-        *formatter = [[formatterClass alloc] init];
+        *formatter = [[formatterClass alloc] initWithLocale:self.locale];
     }
 
     return YES;//no error

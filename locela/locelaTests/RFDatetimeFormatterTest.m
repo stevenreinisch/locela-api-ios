@@ -16,7 +16,7 @@
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
                    inRange:(NSRange)range
-                dateFormat:(NSString *)dateFormat;
+                    format:(NSString *)dateFormat;
 
 @end
 
@@ -71,7 +71,7 @@
     NSString *replaced = [self.sut replaceValue:self.date
                                        inString:string
                                         inRange:range
-                                     dateFormat:format];
+                                         format:format];
 
     XCTAssertEqualObjects(@"Jetzt ist 01.10.2010 09:15:02", replaced);
 }

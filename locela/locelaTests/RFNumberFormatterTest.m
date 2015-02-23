@@ -14,11 +14,11 @@
 @interface RFNumberFormatter (Testing)
 
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder;
-- (NSString *)numberFormatFromPlaceholder:(NSString *)placeholder;
+- (NSString *)formatFromPlaceholder:(NSString *)placeholder;
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
                    inRange:(NSRange)range
-              numberFormat:(NSString *)numberFormat;
+                    format:(NSString *)format;
 
 @end
 
@@ -67,7 +67,7 @@
 {
     NSString *placeholder = @"{12, number, 0.00E0 }";
 
-    NSString *format = [self.sut numberFormatFromPlaceholder:placeholder];
+    NSString *format = [self.sut formatFromPlaceholder:placeholder];
 
     XCTAssertEqualObjects(@"0.00E0", format);
 }
@@ -82,9 +82,9 @@
     NSString *format = @"0.00E0";
     
     NSString *replaced = [self.sut replaceValue:value
-                                    inString:string
+                                       inString:string
                                         inRange:range
-                                   numberFormat:format];
+                                         format:format];
     
     XCTAssertEqualObjects(@"Amount: 1.24E3", replaced);
 }

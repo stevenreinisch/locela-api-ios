@@ -18,7 +18,8 @@
 - (NSInteger)indexFromPlaceholder:(NSString *)placeholder;
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
-                   inRange:(NSRange)range;
+                   inRange:(NSRange)range
+                    format:(NSString *)format;
 
 @end
 
@@ -92,7 +93,8 @@
 
     NSString *result = [self.sut replaceValue:value
                                      inString:string
-                                      inRange:range];
+                                      inRange:range
+                                       format:nil];
 
     XCTAssertEqualObjects(result, @"Hello Peter");
 }

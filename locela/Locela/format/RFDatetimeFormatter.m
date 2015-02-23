@@ -8,6 +8,11 @@
 
 @implementation RFDatetimeFormatter
 
+- (NSRange)formatRangeFromPlaceholder:(NSString *)placeholder
+{
+    return [placeholder rangeOfString:@"datetime,"];
+}
+
 - (void)setStyle:(NSDateFormatterStyle)style forFormatter:(NSDateFormatter *)formatter
 {
     [formatter setDateStyle:style];
