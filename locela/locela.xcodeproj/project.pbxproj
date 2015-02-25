@@ -24,6 +24,8 @@
 		9040BC79DCDCC8DF315114AC /* RFDatetimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BB8288A24724DB6E2F24 /* RFDatetimeFormatter.m */; };
 		9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */; };
 		9040BFE2FCB8DFF48246EB34 /* RFDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B7FDEDDC0C6D8E043B8D /* RFDateFormatter.m */; };
+		F96098271A9DAD7F00356FF1 /* RFChoiceFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F96098261A9DAD7F00356FF1 /* RFChoiceFormatter.m */; };
+		F96098291A9DAD9600356FF1 /* RFChoiceFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F96098281A9DAD9600356FF1 /* RFChoiceFormatterTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,9 @@
 		9040BB8288A24724DB6E2F24 /* RFDatetimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDatetimeFormatter.m; sourceTree = "<group>"; };
 		9040BF19DBA018C7F2984AE1 /* RFValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFValueFormatter.m; sourceTree = "<group>"; };
 		9040BF43F6B72DCE06BD398B /* RFDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDateFormatter.h; sourceTree = "<group>"; };
+		F96098251A9DAD7F00356FF1 /* RFChoiceFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFChoiceFormatter.h; sourceTree = "<group>"; };
+		F96098261A9DAD7F00356FF1 /* RFChoiceFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFChoiceFormatter.m; sourceTree = "<group>"; };
+		F96098281A9DAD9600356FF1 /* RFChoiceFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFChoiceFormatterTest.m; path = locelaTests/RFChoiceFormatterTest.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +141,7 @@
 				9040B2FA492447029F02460F /* RFDateFormatterTest.m */,
 				9040B54F8B97997B321A9DA1 /* RFTimeFormatterTest.m */,
 				9040B3CD11D1F9BCF88C0742 /* RFDatetimeFormatterTest.m */,
+				F96098281A9DAD9600356FF1 /* RFChoiceFormatterTest.m */,
 			);
 			path = LocelaTests;
 			sourceTree = "<group>";
@@ -165,6 +171,8 @@
 				9040B33892E97EA9AC08BC1F /* RFTimeFormatter.h */,
 				9040BB8288A24724DB6E2F24 /* RFDatetimeFormatter.m */,
 				9040B160463FB93CE1C5921C /* RFDatetimeFormatter.h */,
+				F96098251A9DAD7F00356FF1 /* RFChoiceFormatter.h */,
+				F96098261A9DAD7F00356FF1 /* RFChoiceFormatter.m */,
 			);
 			path = format;
 			sourceTree = "<group>";
@@ -224,7 +232,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2EB08E221A8DDBBD00E72BB1 /* Build configuration list for PBXProject "Locela" */;
+			buildConfigurationList = 2EB08E221A8DDBBD00E72BB1 /* Build configuration list for PBXProject "locela" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -262,6 +270,7 @@
 				9040B0A6A05A8B06B140B97F /* RFStringFormatter.m in Sources */,
 				9040B8CB2DFB03BCBC3B781E /* RFValueFormatter.m in Sources */,
 				9040B38BF42C65176453230B /* RFNumberFormatter.m in Sources */,
+				F96098271A9DAD7F00356FF1 /* RFChoiceFormatter.m in Sources */,
 				9040BFE2FCB8DFF48246EB34 /* RFDateFormatter.m in Sources */,
 				9040B9458BA6A8A443720F72 /* RFTimeFormatter.m in Sources */,
 				9040BC79DCDCC8DF315114AC /* RFDatetimeFormatter.m in Sources */,
@@ -273,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */,
+				F96098291A9DAD9600356FF1 /* RFChoiceFormatterTest.m in Sources */,
 				9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */,
 				9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */,
 				9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */,
@@ -418,7 +428,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2EB08E221A8DDBBD00E72BB1 /* Build configuration list for PBXProject "Locela" */ = {
+		2EB08E221A8DDBBD00E72BB1 /* Build configuration list for PBXProject "locela" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2EB08E391A8DDBBD00E72BB1 /* Debug */,
@@ -434,6 +444,7 @@
 				2EB08E3D1A8DDBBD00E72BB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2EB08E3E1A8DDBBD00E72BB1 /* Build configuration list for PBXNativeTarget "LocelaTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +453,7 @@
 				2EB08E401A8DDBBD00E72BB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
