@@ -38,7 +38,41 @@
 - (void)testExample1
 {
     //NSString *string = @"There {zero,choice,0#is no file|1#is one file|1<are {zero,number} files}.";
-    NSString *string = @"There {0,choice,0#is no file|1#is one file|1<are {zero,number} files}.";
+    NSString *string = @"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}.";
+    
+    /*
+        - parse conditions
+        - evaluate conditions
+            - first one that evaluates to true is used to replace the placeholder with its subpattern
+     
+    
+        condition: <test><operator><subPattern>
+        
+        class Condition
+        {
+            String test
+            char   op
+            String subPattern
+            
+            BOOL eval(value)
+            {
+                switch (op)
+                {
+                    case EQUALS      : {
+                        
+                        if (value is number) return test == value
+                        if (value is BOOL)   return test == value
+                        if (value is String) return [test isEqualToString:value]
+     
+                    } break;
+     
+                    case GREATER_THAN: return test < value
+                }
+            }
+        }
+     
+        ChoiceFormatter -*-> Condition
+     */
     
     NSString *result = nil;
     
