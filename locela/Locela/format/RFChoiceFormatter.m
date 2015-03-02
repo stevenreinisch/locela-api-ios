@@ -52,6 +52,13 @@ NSString *const kRFChoiceConditionTestPattern = @"\\d(#|<)";
 {
     NSMutableArray *conditions = [[NSMutableArray alloc] init];
 
+    NSString *withoutConditions  = [string copy];
+    RFChoiceCondition *condition = nil;
+
+    //while (![@"" isEqualToString:withoutConditions])
+    {
+        //condition = [self extractConditionFromString:withoutConditions];// stringWithoutCondition:<#(NSString **)withoutCondition#>]
+    }
 
     return [NSArray arrayWithArray:conditions];
 }
@@ -60,18 +67,20 @@ NSString *const kRFChoiceConditionTestPattern = @"\\d(#|<)";
                            stringWithoutCondition:(NSString **)withoutCondition
 {
     RFChoiceCondition *condition = nil;
+    NSUInteger conditionEndIndex = string.length;
 
     NSRange pipeRange = [string rangeOfString:@"|"];
 
-    if (NSNotFound != pipeRange.location)
-    {
-        NSRange conditionRange    = NSMakeRange(0, pipeRange.location);
+    if (NSNotFound != pipeRange.location) {
+        conditionEndIndex = pipeRange.location;
+    }
+        NSRange conditionRange    = NSMakeRange(0, conditionEndIndex);
         NSString *conditionString = [string substringWithRange:conditionRange];
 
         NSTextCheckingResult *result = nil;
         NSError               *error = nil;
 
-        BOOL regExpOk = [RFRegExpUtil matchString:string
+        BOOL regExpOk = [RFRegExpUtil matchString:conditionString
                              againstRegExpPattern:kRFChoiceConditionTestPattern
                                             match:&result
                                             error:&error];
@@ -91,11 +100,17 @@ NSString *const kRFChoiceConditionTestPattern = @"\\d(#|<)";
             condition = [[RFChoiceCondition alloc] initWithTest:test
                                                        operator:operator
                                                      subPattern:subPattern];
-
-            *withoutCondition = [string substringWithRange:
-                                     NSMakeRange(pipeRange.location + 1, string.length - pipeRange.location - 1)];
+            if (conditionEndIndex < string.length)
+            {
+                *withoutCondition = [string substringWithRange:
+                                          NSMakeRange(conditionEndIndex + 1, string.length - conditionEndIndex - 1)];
+            }
+            else
+            {
+                *withoutCondition = @""; //this means we are finished extracting conditions
+            }
         }
-    }
+
 
     return condition;
 }

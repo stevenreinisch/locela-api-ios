@@ -166,7 +166,7 @@
     XCTAssertEqualObjects(@"is no file", condition.subPattern);
 }
 
-- (void)XtestExtractConditionFromStringOneCondition
+- (void)testExtractConditionFromStringOneCondition
 {
     NSString *string = @"1<are {zero,number} files";
     NSString *withoutCondition = nil;
