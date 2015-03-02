@@ -5,6 +5,8 @@
 
 #import "RFChoiceCondition.h"
 
+typedef BOOL (^operatorEval)(id test);
+
 #pragma mark - private
 
 @interface RFChoiceCondition ()
@@ -45,35 +47,34 @@
         {
             if ([value isKindOfClass:[NSDecimalNumber class]])
             {
-                NSDecimalNumber *decimal = [self testToDecimal];
-
-                if (decimal)
+                result = [self evaluateValue:value op:^BOOL(id test)
                 {
-                    result = [(NSDecimalNumber *) value isEqualToNumber:decimal];
-                }
+                    return [(NSDecimalNumber *) value isEqualToNumber:test];
+                }];
             }
             else if ([value isKindOfClass:[NSNumber class]])
             {
-                NSNumber *num = [self testToNumber];
-
-                if (num)
+                result = [self evaluateValue:value op:^BOOL(id test)
                 {
-                    result = [(NSNumber *) value isEqualToNumber:num];
-                }
+                    return [(NSNumber *) value isEqualToNumber:test];
+                }];
             }
             else if ([value isKindOfClass:[NSString class]])
             {
-                if (self.test)
+                result = [self evaluateValue:value op:^BOOL(id test)
                 {
-                    result = [(NSString *) value isEqualToString:self.test];
-                }
+                    return [(NSString *) value isEqualToString:test];
+                }];
             }
             else if ([value isKindOfClass:[NSValue class]])//this indicates a BOOL in our implementation
             {
-                BOOL boolValue = NO;
-                [(NSValue *)value getValue:&boolValue];
+                result = [self evaluateValue:value op:^BOOL(id test)
+                {
+                    BOOL boolValue = NO;
+                    [(NSValue *)value getValue:&boolValue];
 
-                result = boolValue == [self testToBool];
+                    return boolValue == [self testToBool];
+                }];
             }
         } break;
 
@@ -81,21 +82,17 @@
         {
             if ([value isKindOfClass:[NSDecimalNumber class]])
             {
-                NSDecimalNumber *decimal = [self testToDecimal];
-
-                if (decimal)
+                result = [self evaluateValue:value op:^BOOL(id test)
                 {
-                    result = [(NSDecimalNumber *) value compare:decimal] == NSOrderedDescending;
-                }
+                    return [(NSDecimalNumber *) value compare:test] == NSOrderedDescending;
+                }];
             }
             else if ([value isKindOfClass:[NSNumber class]])
             {
-                NSNumber *num = [self testToNumber];
-
-                if (num)
+                result = [self evaluateValue:value op:^BOOL(id test)
                 {
-                    result = [(NSNumber *) value compare:num] == NSOrderedDescending;
-                }
+                    return [(NSNumber *) value compare:test] == NSOrderedDescending;
+                }];
             }
         } break;
     }
@@ -104,6 +101,44 @@
 }
 
 #pragma mark - private
+
+- (BOOL)evaluateValue:(id<NSObject>)value
+                   op:(operatorEval)operatorEval
+{
+    BOOL result = NO;
+
+    if ([value isKindOfClass:[NSDecimalNumber class]])
+    {
+        NSDecimalNumber *decimal = [self testToDecimal];
+
+        if (decimal)
+        {
+            result = operatorEval(decimal);
+        }
+    }
+    else if ([value isKindOfClass:[NSNumber class]])
+    {
+        NSNumber *num = [self testToNumber];
+
+        if (num)
+        {
+            result = operatorEval(num);
+        }
+    }
+    else if ([value isKindOfClass:[NSString class]])
+    {
+        if (self.test)
+        {
+            result = operatorEval(self.test);
+        }
+    }
+    else if ([value isKindOfClass:[NSValue class]])//this indicates a BOOL in our implementation
+    {
+        result = operatorEval(value);
+    }
+
+    return result;
+}
 
 - (NSNumber *)testToNumber
 {
