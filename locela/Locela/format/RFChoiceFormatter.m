@@ -36,11 +36,7 @@ NSString *const kRFChoiceConditionTestPattern = @"\\d(#|<)";
 {
     NSMutableString *mutable = [NSMutableString stringWithString:string];
 
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-
-    [formatter setPositiveFormat:format];
-
-    NSString *valueString = [formatter stringFromNumber:value];
+    NSString *valueString = [self evaluateConditions:format value:value];
     [mutable replaceCharactersInRange:range withString:valueString];
 
     return [NSString stringWithString:mutable];
@@ -48,20 +44,44 @@ NSString *const kRFChoiceConditionTestPattern = @"\\d(#|<)";
 
 #pragma mark - private
 
+- (NSString *)evaluateConditions:(NSString *)conditionsString
+                           value:(id)value
+{
+    __block NSString *valueString = nil;
+    NSArray *conditions = [self conditionsFromString:conditionsString];
+
+    [conditions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    {
+        RFChoiceCondition *condition = (RFChoiceCondition *)obj;
+        BOOL evaluation              = [condition evaluate:value];
+        if (evaluation)
+        {
+            *stop = YES;
+
+            valueString = [condition.subPattern copy];
+        }
+    }];
+
+    return valueString;
+}
+
 - (NSArray *)conditionsFromString:(NSString *)string
 {
     NSMutableArray *conditions = [[NSMutableArray alloc] init];
 
-    NSString *conditionsToParse  = [string copy];
-    RFChoiceCondition *condition = nil;
-
-    while (![@"" isEqualToString:conditionsToParse])
+    if (string && ![@"" isEqualToString:string])
     {
-        condition = [self extractConditionFromString:&conditionsToParse];
+        NSString *conditionsToParse = [string copy];
+        RFChoiceCondition *condition = nil;
 
-        if (condition)
+        while (![@"" isEqualToString:conditionsToParse])
         {
-            [conditions addObject:condition];
+            condition = [self extractConditionFromString:&conditionsToParse];
+
+            if (condition)
+            {
+                [conditions addObject:condition];
+            }
         }
     }
 
@@ -78,43 +98,42 @@ NSString *const kRFChoiceConditionTestPattern = @"\\d(#|<)";
     if (NSNotFound != pipeRange.location) {
         conditionEndIndex = pipeRange.location;
     }
-        NSRange conditionRange    = NSMakeRange(0, conditionEndIndex);
-        NSString *conditionString = [*string substringWithRange:conditionRange];
+    NSRange conditionRange    = NSMakeRange(0, conditionEndIndex);
+    NSString *conditionString = [*string substringWithRange:conditionRange];
 
-        NSTextCheckingResult *result = nil;
-        NSError               *error = nil;
+    NSTextCheckingResult *result = nil;
+    NSError               *error = nil;
 
-        BOOL regExpOk = [RFRegExpUtil matchString:conditionString
-                             againstRegExpPattern:kRFChoiceConditionTestPattern
-                                            match:&result
-                                            error:&error];
+    BOOL regExpOk = [RFRegExpUtil matchString:conditionString
+                         againstRegExpPattern:kRFChoiceConditionTestPattern
+                                        match:&result
+                                        error:&error];
 
-        if (!regExpOk)//The regExp might be malformed.
+    if (!regExpOk)//The regExp might be malformed.
+    {
+        return nil;
+    }
+
+    if (result)
+    {
+        NSString *test = [conditionString substringWithRange:NSMakeRange(0, result.range.length - 1)];
+        char operator  = [[conditionString substringWithRange:NSMakeRange(result.range.length - 1, 1)]
+                                        UTF8String][0];
+        NSString *subPattern = [conditionString substringWithRange:NSMakeRange(result.range.length, conditionString.length - result.range.length)];
+
+        condition = [[RFChoiceCondition alloc] initWithTest:test
+                                                   operator:operator
+                                                 subPattern:subPattern];
+        if (conditionEndIndex < [*string length])
         {
-            return nil;
+            *string = [*string substringWithRange:
+                                      NSMakeRange(conditionEndIndex + 1, [*string length] - conditionEndIndex - 1)];
         }
-
-        if (result)
+        else
         {
-            NSString *test = [conditionString substringWithRange:NSMakeRange(0, result.range.length - 1)];
-            char operator  = [[conditionString substringWithRange:NSMakeRange(result.range.length - 1, 1)]
-                                            UTF8String][0];
-            NSString *subPattern = [conditionString substringWithRange:NSMakeRange(result.range.length, conditionString.length - result.range.length)];
-
-            condition = [[RFChoiceCondition alloc] initWithTest:test
-                                                       operator:operator
-                                                     subPattern:subPattern];
-            if (conditionEndIndex < [*string length])
-            {
-                *string = [*string substringWithRange:
-                                          NSMakeRange(conditionEndIndex + 1, [*string length] - conditionEndIndex - 1)];
-            }
-            else
-            {
-                *string = @""; //this means we are finished extracting conditions
-            }
+            *string = @""; //this means we are finished extracting conditions
         }
-
+    }
 
     return condition;
 }
