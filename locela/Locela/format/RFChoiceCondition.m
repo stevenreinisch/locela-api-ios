@@ -5,7 +5,7 @@
 
 #import "RFChoiceCondition.h"
 
-typedef BOOL (^operatorEval)(id test);
+typedef BOOL (^operatorEval)(id transformedTest);
 
 #pragma mark - private
 
@@ -47,28 +47,28 @@ typedef BOOL (^operatorEval)(id test);
         {
             if ([value isKindOfClass:[NSDecimalNumber class]])
             {
-                result = [self evaluateValue:value op:^BOOL(id test)
+                result = [self evaluateValue:value op:^BOOL(id transformedTest)
                 {
-                    return [(NSDecimalNumber *) value isEqualToNumber:test];
+                    return [(NSDecimalNumber *) value isEqualToNumber:transformedTest];
                 }];
             }
             else if ([value isKindOfClass:[NSNumber class]])
             {
-                result = [self evaluateValue:value op:^BOOL(id test)
+                result = [self evaluateValue:value op:^BOOL(id transformedTest)
                 {
-                    return [(NSNumber *) value isEqualToNumber:test];
+                    return [(NSNumber *) value isEqualToNumber:transformedTest];
                 }];
             }
             else if ([value isKindOfClass:[NSString class]])
             {
-                result = [self evaluateValue:value op:^BOOL(id test)
+                result = [self evaluateValue:value op:^BOOL(id transformedTest)
                 {
-                    return [(NSString *) value isEqualToString:test];
+                    return [(NSString *) value isEqualToString:transformedTest];
                 }];
             }
             else if ([value isKindOfClass:[NSValue class]])//this indicates a BOOL in our implementation
             {
-                result = [self evaluateValue:value op:^BOOL(id test)
+                result = [self evaluateValue:value op:^BOOL(id transformedTest)
                 {
                     BOOL boolValue = NO;
                     [(NSValue *)value getValue:&boolValue];
@@ -82,16 +82,16 @@ typedef BOOL (^operatorEval)(id test);
         {
             if ([value isKindOfClass:[NSDecimalNumber class]])
             {
-                result = [self evaluateValue:value op:^BOOL(id test)
+                result = [self evaluateValue:value op:^BOOL(id transformedTest)
                 {
-                    return [(NSDecimalNumber *) value compare:test] == NSOrderedDescending;
+                    return [(NSDecimalNumber *) value compare:transformedTest] == NSOrderedDescending;
                 }];
             }
             else if ([value isKindOfClass:[NSNumber class]])
             {
-                result = [self evaluateValue:value op:^BOOL(id test)
+                result = [self evaluateValue:value op:^BOOL(id transformedTest)
                 {
-                    return [(NSNumber *) value compare:test] == NSOrderedDescending;
+                    return [(NSNumber *) value compare:transformedTest] == NSOrderedDescending;
                 }];
             }
         } break;

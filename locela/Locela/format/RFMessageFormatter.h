@@ -20,6 +20,7 @@ extern NSString *const kRFMessageFormatterNumberPlaceholderPattern;
 extern NSString *const kRFMessageFormatterDatePlaceholderPattern;
 extern NSString *const kRFMessageFormatterTimePlaceholderPattern;
 extern NSString *const kRFMessageFormatterDatetimePlaceholderPattern;
+extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
 
 #pragma mark -
 

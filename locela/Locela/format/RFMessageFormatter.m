@@ -10,6 +10,8 @@
 #import "RFDateFormatter.h"
 #import "RFTimeFormatter.h"
 #import "RFDatetimeFormatter.h"
+#import "RFChoiceFormatter.h"
+#import "RFRegExpUtil.h"
 
 #pragma mark - constants
 
@@ -20,6 +22,7 @@ NSString *const kRFMessageFormatterNumberPlaceholderPattern   = @"\\{\\d,\s*numb
 NSString *const kRFMessageFormatterDatePlaceholderPattern     = @"\\{\\d,\s*date(,\s*.+)?\\}";
 NSString *const kRFMessageFormatterTimePlaceholderPattern     = @"\\{\\d,\s*time(,\s*.+)?\\}";
 NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*datetime(,\s*.+)?\\}";
+NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\s*choice(,\s*.+)\\}";
 
 #pragma mark - private
 
@@ -59,7 +62,8 @@ NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*date
                 kRFMessageFormatterNumberPlaceholderPattern   : [RFNumberFormatter class],
                 kRFMessageFormatterDatePlaceholderPattern     : [RFDateFormatter class],
                 kRFMessageFormatterTimePlaceholderPattern     : [RFTimeFormatter class],
-                kRFMessageFormatterDatetimePlaceholderPattern : [RFDatetimeFormatter class]
+                kRFMessageFormatterDatetimePlaceholderPattern : [RFDatetimeFormatter class],
+                kRFMessageFormatterChoicePlaceholderPattern   : [RFChoiceFormatter class]
         };
     }
     return self;
@@ -91,10 +95,10 @@ NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*date
     //find the formatter for the given pattern
     while (!*result && (regExp = [enumerator nextObject]))
     {
-        BOOL regExpOk = [self matchString:string
-                     againstRegExpPattern:regExp
-                                    match:result
-                                    error:error];
+        BOOL regExpOk = [RFRegExpUtil matchString:string
+                             againstRegExpPattern:regExp
+                                            match:result
+                                            error:error];
 
         if (!regExpOk)//The regExp might be malformed.
         {
@@ -119,34 +123,6 @@ NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*date
     }
 
     return YES;//no error
-}
-
-- (BOOL) matchString:(NSString *)string
-againstRegExpPattern:(NSString *)regExPattern
-               match:(NSTextCheckingResult **)match
-               error:(NSError **)error
-{
-    NSError                    *regexError   = NULL;
-    NSRegularExpressionOptions regexOptions  = NSRegularExpressionCaseInsensitive;
-    NSRegularExpression        *regex        = [NSRegularExpression regularExpressionWithPattern:regExPattern
-                                                                                         options:regexOptions
-                                                                                           error:&regexError];
-    if (regexError)
-    {
-        NSLog(@"Couldn't create regex with given string and options");
-
-        *error = [NSError errorWithDomain:kRFMessageFormatterErrorDomain
-                                     code:RFMessageFormatterErrorCodeCannotCreateRegExp
-                                 userInfo:@{ @"pattern" : regExPattern }];
-
-        return NO;
-    }
-
-    *match = [regex firstMatchInString:string
-                               options:0
-                                 range:NSMakeRange(0, string.length)];
-
-    return YES;
 }
 
 - (BOOL)replaceFirstPlaceholderInPattern:(NSString *)pattern
