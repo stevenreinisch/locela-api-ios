@@ -15,8 +15,7 @@
 @interface RFChoiceFormatter (Testing)
 
 - (NSArray *)conditionsFromString:(NSString *)string;
-- (RFChoiceCondition *)extractConditionFromString:(NSString *)string
-                           stringWithoutCondition:(NSString **)withoutCondition;
+- (RFChoiceCondition *)extractConditionFromString:(NSString **)string;
 
 @end
 
@@ -154,12 +153,10 @@
 - (void)testExtractConditionFromString
 {
     NSString *string = @"0#is no file|1#is one file|1<are {zero,number} files";
-    NSString *withoutCondition = nil;
 
-    RFChoiceCondition *condition = [self.sut extractConditionFromString:string
-                                                 stringWithoutCondition:&withoutCondition];
+    RFChoiceCondition *condition = [self.sut extractConditionFromString:&string];
 
-    XCTAssertEqualObjects(withoutCondition, @"1#is one file|1<are {zero,number} files");
+    XCTAssertEqualObjects(string, @"1#is one file|1<are {zero,number} files");
     XCTAssertNotNil(condition);
     XCTAssertEqual('#', condition.operator);
     XCTAssertEqualObjects(@"0", condition.test);
@@ -171,10 +168,9 @@
     NSString *string = @"1<are {zero,number} files";
     NSString *withoutCondition = nil;
 
-    RFChoiceCondition *condition = [self.sut extractConditionFromString:string
-                                                 stringWithoutCondition:&withoutCondition];
+    RFChoiceCondition *condition = [self.sut extractConditionFromString:&string];
 
-    XCTAssertEqualObjects(withoutCondition, @"");
+    XCTAssertEqualObjects(string, @"");
     XCTAssertNotNil(condition);
     XCTAssertEqual('<', condition.operator);
     XCTAssertEqualObjects(@"1", condition.test);
