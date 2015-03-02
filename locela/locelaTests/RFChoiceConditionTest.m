@@ -45,6 +45,8 @@
 
 #pragma mark - tests
 
+#pragma mark - equals operator
+
 - (void)testEvaluateEqualsString
 {
     self.sut = [[RFChoiceCondition alloc] initWithTest:@"hello"
@@ -114,6 +116,76 @@
     BOOL result = [self.sut evaluate:[NSDecimalNumber decimalNumberWithString:numString]];
 
     XCTAssertTrue(result);
+}
+
+#pragma mark - greater than operator
+
+- (void)testEvaluateOneGreaterThanOne
+{
+    self.sut = [[RFChoiceCondition alloc] initWithTest:@"1"
+                                              operator:'<'
+                                            subPattern:@"subPattern"];
+
+    BOOL result = [self.sut evaluate:@1];
+
+    XCTAssertFalse(result);
+}
+
+- (void)testEvaluateTwoGreaterThanOne
+{
+    self.sut = [[RFChoiceCondition alloc] initWithTest:@"1"
+                                              operator:'<'
+                                            subPattern:@"subPattern"];
+
+    BOOL result = [self.sut evaluate:@2];
+
+    XCTAssertTrue(result);
+}
+
+- (void)testEvaluateMinusTwoGreaterThanOne
+{
+    self.sut = [[RFChoiceCondition alloc] initWithTest:@"1"
+                                              operator:'<'
+                                            subPattern:@"subPattern"];
+
+    BOOL result = [self.sut evaluate:@-2];
+
+    XCTAssertFalse(result);
+}
+
+- (void)testEvaluateDecimalGreaterThanSameDecimal
+{
+    NSString *numString = @"1.54";
+
+    self.sut = [[RFChoiceCondition alloc] initWithTest:numString
+                                              operator:'<'
+                                            subPattern:@"subPattern"];
+
+    BOOL result = [self.sut evaluate:[NSDecimalNumber decimalNumberWithString:numString]];
+
+    XCTAssertFalse(result);
+}
+
+- (void)testEvaluateDecimalGreaterThanDifferentDecimal
+{
+    self.sut = [[RFChoiceCondition alloc] initWithTest:@"1.54"
+                                              operator:'<'
+                                            subPattern:@"subPattern"];
+
+    BOOL result = [self.sut evaluate:[NSDecimalNumber decimalNumberWithString:@"2.5322"]];
+
+    XCTAssertTrue(result);
+}
+
+- (void)testEvaluateNegativeDecimalGreaterThanDifferentDecimal
+{
+    self.sut = [[RFChoiceCondition alloc] initWithTest:@"1.54"
+                                              operator:'<'
+                                            subPattern:@"subPattern"];
+
+    BOOL result = [self.sut evaluate:[NSDecimalNumber decimalNumberWithString:@"-2.5322"]];
+
+    XCTAssertFalse(result);
 }
 
 #pragma mark - testToNumber

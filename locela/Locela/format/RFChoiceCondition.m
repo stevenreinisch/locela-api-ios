@@ -79,7 +79,24 @@
 
         case '<':
         {
-            //TODO
+            if ([value isKindOfClass:[NSDecimalNumber class]])
+            {
+                NSDecimalNumber *decimal = [self testToDecimal];
+
+                if (decimal)
+                {
+                    result = [(NSDecimalNumber *) value compare:decimal] == NSOrderedDescending;
+                }
+            }
+            else if ([value isKindOfClass:[NSNumber class]])
+            {
+                NSNumber *num = [self testToNumber];
+
+                if (num)
+                {
+                    result = [(NSNumber *) value compare:num] == NSOrderedDescending;
+                }
+            }
         } break;
     }
 
