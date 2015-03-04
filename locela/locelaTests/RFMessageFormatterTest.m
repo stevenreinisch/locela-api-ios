@@ -97,6 +97,21 @@
 
 #pragma mark - formatPattern:values
 
+- (void)testFormatPatternValuesOneNumber
+{
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    BOOL isFormatted = [self.sut formatPattern:@"Hello {0, number}!"
+                                        values:@[@21]
+                                        result:&result
+                                         error:&error];
+
+    XCTAssertTrue(isFormatted);
+
+    XCTAssertEqualObjects(@"Hello 21!", result);
+}
+
 - (void)testFormatPatternValuesOneString
 {
     NSString *result = nil;
@@ -189,6 +204,68 @@
 
     XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Heute ist 01.10.2010.", result);
+}
+
+- (void)testFormatPatternValuesWithChoice
+{
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_EN"];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
+
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    //call sut
+    BOOL isFormatted = [self.sut formatPattern:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
+                                        values:@[@0]
+                                        result:&result
+                                         error:&error];
+
+    XCTAssertTrue(isFormatted);
+    XCTAssertEqualObjects(@"There is no file.", result);
+}
+
+- (void)testFormatPatternValuesWithChoiceAndSubPattern
+{
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_EN"];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
+
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    //call sut
+    BOOL isFormatted = [self.sut formatPattern:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
+                                        values:@[@10]
+                                        result:&result
+                                         error:&error];
+
+    XCTAssertTrue(isFormatted);
+    XCTAssertEqualObjects(@"There are 10 files.", result);
+}
+
+- (void)testFormatPatternValuesWithDateAndChoice
+{
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
+
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:10];
+    [comps setYear:2010];
+    NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:comps];
+
+    NSString *pattern = @"Heute ist {0,date} und die Katze hat {1,choice,1#einen Schwanz|1<{1,number} Schwänze.}";
+
+    //call sut
+    BOOL isFormatted = [self.sut formatPattern:pattern
+                                        values:@[date, @1]
+                                        result:&result
+                                         error:&error];
+
+    XCTAssertTrue(isFormatted);
+    XCTAssertEqualObjects(@"Heute ist 01.10.2010 und die Katze hat 4 Schwänze.", result);
 }
 
 @end

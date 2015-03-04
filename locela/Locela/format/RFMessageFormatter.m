@@ -18,11 +18,11 @@
 NSString *const kRFMessageFormatterErrorDomain = @"RFMessageFormatterError";
 
 NSString *const kRFMessageFormatterSimplePlaceholderPattern   = @"\\{\\d\\}";
-NSString *const kRFMessageFormatterNumberPlaceholderPattern   = @"\\{\\d,\s*number,\s*.+\\}";
-NSString *const kRFMessageFormatterDatePlaceholderPattern     = @"\\{\\d,\s*date(,\s*.+)?\\}";
-NSString *const kRFMessageFormatterTimePlaceholderPattern     = @"\\{\\d,\s*time(,\s*.+)?\\}";
-NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\s*datetime(,\s*.+)?\\}";
-NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\s*choice(,\s*.+)\\}";
+NSString *const kRFMessageFormatterNumberPlaceholderPattern   = @"\\{\\d,\\s*number(,\\s*.+)?\\}";
+NSString *const kRFMessageFormatterDatePlaceholderPattern     = @"\\{\\d,\\s*date(,\\s*.+)?\\}";
+NSString *const kRFMessageFormatterTimePlaceholderPattern     = @"\\{\\d,\\s*time(,\\s*.+)?\\}";
+NSString *const kRFMessageFormatterDatetimePlaceholderPattern = @"\\{\\d,\\s*datetime(,\\s*.+)?\\}";
+NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*choice(,\\s*.+)\\}";
 
 #pragma mark - private
 
@@ -136,7 +136,7 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\s*choi
     BOOL callOk = [self                 findFormatter:&formatter
                           forFirstPlaceholderInString:pattern
                                                result:&matchResult
-                                                error:&error];
+                                                error:error];
 
     if (!callOk) //something went wrong finding a matching formatter
     {
