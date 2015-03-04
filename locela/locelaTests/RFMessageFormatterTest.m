@@ -15,6 +15,14 @@
 #import "RFDatetimeFormatter.h"
 #import "RFChoiceFormatter.h"
 
+extern NSString *const kRFMessageFormatterSimplePlaceholderPattern;
+extern NSString *const kRFMessageFormatterNumberPlaceholderPattern;
+extern NSString *const kRFMessageFormatterDatePlaceholderPattern;
+extern NSString *const kRFMessageFormatterTimePlaceholderPattern;
+extern NSString *const kRFMessageFormatterDatetimePlaceholderPattern;
+extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
+extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
+
 #pragma mark - private forward declarations
 
 @interface RFMessageFormatter (Testing)
@@ -260,7 +268,7 @@
 
     //call sut
     BOOL isFormatted = [self.sut formatPattern:pattern
-                                        values:@[date, @1]
+                                        values:@[date, @4]
                                         result:&result
                                          error:&error];
 

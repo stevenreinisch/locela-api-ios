@@ -15,13 +15,6 @@ typedef NS_ENUM(NSUInteger, RFMessageFormatterErrorCode) {
     RFMessageFormatterErrorCodeNoMatchingFormatter
 };
 
-extern NSString *const kRFMessageFormatterSimplePlaceholderPattern;
-extern NSString *const kRFMessageFormatterNumberPlaceholderPattern;
-extern NSString *const kRFMessageFormatterDatePlaceholderPattern;
-extern NSString *const kRFMessageFormatterTimePlaceholderPattern;
-extern NSString *const kRFMessageFormatterDatetimePlaceholderPattern;
-extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
-
 #pragma mark -
 
 @interface RFMessageFormatter : NSObject

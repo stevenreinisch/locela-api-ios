@@ -32,7 +32,7 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 
 /*
  * key: regular expression
- * value: formatter
+ * value: formatter class
  */
 @property (nonatomic, strong) NSDictionary *formatterClasses;
 
