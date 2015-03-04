@@ -6,7 +6,7 @@
 #import "RFMessageFormatter.h"
 #import "RFStringFormatter.h"
 #import "RFNumberFormatter.h"
-#import "RFValueFormatter.h"
+#import "RFBaseFormatter.h"
 #import "RFDateFormatter.h"
 #import "RFTimeFormatter.h"
 #import "RFDatetimeFormatter.h"
@@ -71,12 +71,12 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 
 #pragma mark -
 
-- (BOOL)formatPattern:(NSString *)pattern
+- (BOOL)formatMessage:(NSString *)message
                values:(NSArray *)values
                result:(NSString **)result
                 error:(NSError **)error
 {
-    return [self replaceFirstPlaceholderInPattern:pattern
+    return [self replaceFirstPlaceholderInMessage:message
                                       usingValues:values
                                            result:result
                                             error:error];
@@ -84,10 +84,10 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 
 #pragma mark - private
 
-- (BOOL)              findFormatter:(RFValueFormatter **)formatter
-        forFirstPlaceholderInString:(NSString *)string
-                             result:(NSTextCheckingResult **)result
-                              error:(NSError **)error
+- (BOOL)                findFormatter:(RFBaseFormatter **)formatter
+         forFirstPlaceholderInMessage:(NSString *)message
+                               result:(NSTextCheckingResult **)result
+                                error:(NSError **)error
 {
     NSString *regExp            = nil;
     NSEnumerator *enumerator    = [self.formatterClasses keyEnumerator];
@@ -95,7 +95,7 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
     //find the formatter for the given pattern
     while (!*result && (regExp = [enumerator nextObject]))
     {
-        BOOL regExpOk = [RFRegExpUtil matchString:string
+        BOOL regExpOk = [RFRegExpUtil matchString:message
                              againstRegExpPattern:regExp
                                             match:result
                                             error:error];
@@ -125,18 +125,18 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
     return YES;//no error
 }
 
-- (BOOL)replaceFirstPlaceholderInPattern:(NSString *)pattern
+- (BOOL)replaceFirstPlaceholderInMessage:(NSString *)message
                              usingValues:(NSArray *)values
                                   result:(NSString **)result
                                    error:(NSError **)error
 {
-    RFValueFormatter *formatter       = nil;
+    RFBaseFormatter *formatter        = nil;
     NSTextCheckingResult *matchResult = nil;
 
-    BOOL callOk = [self                 findFormatter:&formatter
-                          forFirstPlaceholderInString:pattern
-                                               result:&matchResult
-                                                error:error];
+    BOOL callOk = [self                  findFormatter:&formatter
+                          forFirstPlaceholderInMessage:message
+                                                result:&matchResult
+                                                 error:error];
 
     if (!callOk) //something went wrong finding a matching formatter
     {
@@ -146,25 +146,25 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
     //no match, no formatter, no error => no more placeholders to replace
     if (!matchResult && !formatter)
     {
-        *result = [pattern copy];
+        *result = [message copy];
         return YES;
     }
 
     //We have a match and a formatter. Let it do its job!
     NSString *formatResult = nil;
-    BOOL formattingOk = [formatter formatFirstValuePlaceholderInString:pattern
-                                                                 match:matchResult
-                                                                values:values
-                                                                result:&formatResult
-                                                                 error:error];
+    BOOL formattingOk = [formatter replaceFirstPlaceholderInMessage:message
+                                                              match:matchResult
+                                                             values:values
+                                                             result:&formatResult
+                                                              error:error];
 
     if (!formattingOk)//something went wrong while formatting the placeholder
     {
         return NO;
     }
 
-    //Recursively proceed with other value placeholders
-    return [self replaceFirstPlaceholderInPattern:formatResult
+    //Recursively proceed with other placeholders
+    return [self replaceFirstPlaceholderInMessage:formatResult
                                       usingValues:values
                                            result:result
                                             error:error];

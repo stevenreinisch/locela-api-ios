@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, RFMessageFormatterErrorCode) {
 
 - (instancetype)initWithLocale:(NSLocale *)locale NS_DESIGNATED_INITIALIZER;
 
-- (BOOL)formatPattern:(NSString *)pattern
+- (BOOL)formatMessage:(NSString *)message
                values:(NSArray *)values
                result:(NSString **)result
                 error:(NSError **)error;

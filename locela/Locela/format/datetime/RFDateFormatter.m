@@ -40,27 +40,27 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale           = self.locale;
-    NSDateFormatterStyle style     = kCFDateFormatterNoStyle;
+    NSDateFormatterStyle style     = (NSDateFormatterStyle)kCFDateFormatterNoStyle;
 
     if (!format || [@"" isEqualToString:format])
     {
-        style = kCFDateFormatterMediumStyle;
+        style = (NSDateFormatterStyle)kCFDateFormatterMediumStyle;
     }
     else if (!format || [@"short" isEqualToString:format])
     {
-        style = kCFDateFormatterShortStyle;
+        style = (NSDateFormatterStyle)kCFDateFormatterShortStyle;
     }
     else if (!format || [@"medium" isEqualToString:format])
     {
-        style = kCFDateFormatterMediumStyle;
+        style = (NSDateFormatterStyle)kCFDateFormatterMediumStyle;
     }
     else if (!format || [@"long" isEqualToString:format])
     {
-        style = kCFDateFormatterLongStyle;
+        style = (NSDateFormatterStyle)kCFDateFormatterLongStyle;
     }
     else if (!format || [@"full" isEqualToString:format])
     {
-        style = kCFDateFormatterFullStyle;
+        style = (NSDateFormatterStyle)kCFDateFormatterFullStyle;
     }
     else
     {

@@ -4,10 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RFValueFormatter.h"
+#import "RFBaseFormatter.h"
 
 
-@interface RFDateFormatter : RFValueFormatter
+@interface RFDateFormatter : RFBaseFormatter
 
 #pragma mark - protected
 

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RFValueFormatter.h"
+#import "RFBaseFormatter.h"
 
-@interface RFChoiceFormatter : RFValueFormatter
+@interface RFChoiceFormatter : RFBaseFormatter
 
 @end

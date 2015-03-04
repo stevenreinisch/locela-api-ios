@@ -110,7 +110,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *result = nil;
     NSError  *error  = nil;
 
-    BOOL isFormatted = [self.sut formatPattern:@"Hello {0, number}!"
+    BOOL isFormatted = [self.sut formatMessage:@"Hello {0, number}!"
                                         values:@[@21]
                                         result:&result
                                          error:&error];
@@ -125,7 +125,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *result = nil;
     NSError  *error  = nil;
     
-    BOOL isFormatted = [self.sut formatPattern:@"Hello {0}!"
+    BOOL isFormatted = [self.sut formatMessage:@"Hello {0}!"
                                         values:@[@"Klaus"]
                                         result:&result
                                          error:&error];
@@ -140,7 +140,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *result = nil;
     NSError  *error  = nil;
 
-    BOOL isFormatted = [self.sut formatPattern:@"Hello {0} you are {1}!"
+    BOOL isFormatted = [self.sut formatMessage:@"Hello {0} you are {1}!"
                                         values:@[@"Klaus", @"awesome"]
                                         result:&result
                                          error:&error];
@@ -154,7 +154,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *result = nil;
     NSError  *error  = nil;
     
-    BOOL isFormatted = [self.sut formatPattern:@"Hello {1} you are {0}!"
+    BOOL isFormatted = [self.sut formatMessage:@"Hello {1} you are {0}!"
                                         values:@[@"Klaus", @"awesome"]
                                         result:&result
                                          error:&error];
@@ -168,7 +168,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *result = nil;
     NSError  *error  = nil;
 
-    BOOL isFormatted = [self.sut formatPattern:@"Please Pay {0,number,¤0.00}!"
+    BOOL isFormatted = [self.sut formatMessage:@"Please Pay {0,number,¤0.00}!"
                                         values:@[@(1.5)]
                                         result:&result
                                          error:&error];
@@ -181,7 +181,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *result = nil;
     NSError *error = nil;
 
-    BOOL isFormatted = [self.sut formatPattern:@"{0} please pay {1,number,¤0.00}!"
+    BOOL isFormatted = [self.sut formatMessage:@"{0} please pay {1,number,¤0.00}!"
                                         values:@[@"Dieter", @(1.5)]
                                         result:&result
                                          error:&error];
@@ -205,7 +205,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:comps];
 
     //call sut
-    BOOL isFormatted = [self.sut formatPattern:@"Heute ist {0,date}."
+    BOOL isFormatted = [self.sut formatMessage:@"Heute ist {0,date}."
                                         values:@[date]
                                         result:&result
                                          error:&error];
@@ -223,7 +223,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSError  *error  = nil;
 
     //call sut
-    BOOL isFormatted = [self.sut formatPattern:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
+    BOOL isFormatted = [self.sut formatMessage:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
                                         values:@[@0]
                                         result:&result
                                          error:&error];
@@ -241,7 +241,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSError  *error  = nil;
 
     //call sut
-    BOOL isFormatted = [self.sut formatPattern:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
+    BOOL isFormatted = [self.sut formatMessage:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
                                         values:@[@10]
                                         result:&result
                                          error:&error];
@@ -267,7 +267,7 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     NSString *pattern = @"Heute ist {0,date} und die Katze hat {1,choice,1#einen Schwanz|1<{1,number} Schwänze.}";
 
     //call sut
-    BOOL isFormatted = [self.sut formatPattern:pattern
+    BOOL isFormatted = [self.sut formatMessage:pattern
                                         values:@[date, @4]
                                         result:&result
                                          error:&error];

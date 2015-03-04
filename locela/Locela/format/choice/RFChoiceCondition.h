@@ -8,9 +8,9 @@
 
 @interface RFChoiceCondition : NSObject
 
-@property (nonatomic, readonly, copy) NSString *test;
-@property (nonatomic, readonly, assign) char operator;
-@property (nonatomic, readonly, copy) NSString *subPattern;
+@property (nonatomic, readonly, copy)   NSString *test;
+@property (nonatomic, readonly, assign) char      operator;
+@property (nonatomic, readonly, copy)   NSString *subPattern;
 
 - (instancetype)initWithTest:(NSString *)test
                     operator:(char)operator

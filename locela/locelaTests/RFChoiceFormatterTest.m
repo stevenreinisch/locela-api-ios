@@ -92,7 +92,6 @@
 - (void)testExtractConditionFromStringOneCondition
 {
     NSString *string = @"1<are {zero,number} files";
-    NSString *withoutCondition = nil;
 
     RFChoiceCondition *condition = [self.sut extractConditionFromString:&string];
 

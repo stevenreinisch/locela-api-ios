@@ -3,11 +3,11 @@
 // Copyright (c) 2015 teufel lautsprecher. All rights reserved.
 //
 
-#import "RFValueFormatter.h"
+#import "RFBaseFormatter.h"
 #import "RFMessageFormatter.h"
 
 
-@implementation RFValueFormatter
+@implementation RFBaseFormatter
 
 - (instancetype)initWithLocale:(NSLocale *)locale
 {
@@ -27,17 +27,17 @@
     return self;
 }
 
-- (BOOL)formatFirstValuePlaceholderInString:(NSString *)string
-                                      match:(NSTextCheckingResult *)match
-                                     values:(NSArray *)values
-                                     result:(NSString **)result
-                                      error:(NSError **)error
+- (BOOL)replaceFirstPlaceholderInMessage:(NSString *)message
+                                   match:(NSTextCheckingResult *)match
+                                  values:(NSArray *)values
+                                  result:(NSString **)result
+                                   error:(NSError **)error
 {
-    NSAssert(string, @"Cannot format nil");
+    NSAssert(message, @"Cannot format nil");
     NSAssert(match,  @"Cannot format without a match");
     NSAssert(values, @"Cannot format without values");
 
-    NSString *placeholder = [string substringWithRange:match.range];
+    NSString *placeholder = [message substringWithRange:match.range];
     NSInteger index       = [self indexFromPlaceholder:placeholder];
     NSString *format      = [self formatFromPlaceholder:placeholder];
 
@@ -45,7 +45,7 @@
     {
         id value = values[index];
         *result = [self replaceValue:value
-                            inString:string
+                            inString:message
                              inRange:match.range
                               format:format];
 

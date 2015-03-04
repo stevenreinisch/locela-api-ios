@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RFValueFormatter.h"
+#import "RFBaseFormatter.h"
 
 /*
  * This class formats placeholders with this pattern: {<index>,number,<numberFormat>}
@@ -12,5 +12,5 @@
  *
  * Examples: {0,number,0E00}, {1,number,%0.00}
  */
-@interface RFNumberFormatter : RFValueFormatter
+@interface RFNumberFormatter : RFBaseFormatter
 @end
