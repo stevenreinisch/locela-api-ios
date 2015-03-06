@@ -79,6 +79,7 @@
 		9040BB0A788AA0CF7F0D5682 /* RFChoiceCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFChoiceCondition.m; sourceTree = "<group>"; };
 		9040BB3531C6AD27FA9A25EB /* RFDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDateFormatter.m; sourceTree = "<group>"; };
 		9040BBDDE2ACAD9C8DC5C884 /* RFStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFStringFormatter.h; sourceTree = "<group>"; };
+		9040BD0EB9E3DE93231C3375 /* RFMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMacros.h; sourceTree = "<group>"; };
 		9040BD44EA02A9378CC219E5 /* RFRegExpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRegExpUtil.m; sourceTree = "<group>"; };
 		9040BDD2809EB280F416513A /* RFTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTimeFormatter.m; sourceTree = "<group>"; };
 		9040BF19DBA018C7F2984AE1 /* RFBaseFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFBaseFormatter.m; sourceTree = "<group>"; };
@@ -174,6 +175,7 @@
 			children = (
 				9040B80189ED7AFE3ADBB6C7 /* RFRegExpUtil.h */,
 				9040BD44EA02A9378CC219E5 /* RFRegExpUtil.m */,
+				9040BD0EB9E3DE93231C3375 /* RFMacros.h */,
 			);
 			path = util;
 			sourceTree = "<group>";

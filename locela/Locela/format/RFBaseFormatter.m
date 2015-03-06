@@ -5,7 +5,7 @@
 
 #import "RFBaseFormatter.h"
 #import "RFMessageFormatter.h"
-
+#import "RFMacros.h"
 
 @implementation RFBaseFormatter
 
@@ -85,17 +85,9 @@
     }
 }
 
-- (NSRange)rangeOfIndexInPlaceholder:(NSString *)placeholder
-{
-    [NSException raise:@"Abstract Method" format:@"Implement this method in a sub class"];
-    return NSMakeRange(NSNotFound, 0);
-}
+- (NSRange)rangeOfIndexInPlaceholder:(NSString *)placeholder ABSTRACT_METHOD
 
-- (NSRange)formatRangeFromPlaceholder:(NSString *)placeholder
-{
-    [NSException raise:@"Abstract Method" format:@"Implement this method in a sub class"];
-    return NSMakeRange(NSNotFound, 0);
-}
+- (NSRange)formatRangeFromPlaceholder:(NSString *)placeholder ABSTRACT_METHOD
 
 - (NSString *)formatFromPlaceholder:(NSString *)placeholder
 {
@@ -118,10 +110,6 @@
 - (NSString *)replaceValue:(id)value
                   inString:(NSString *)string
                    inRange:(NSRange)range
-                    format:(NSString *)format
-{
-    [NSException raise:@"Abstract Method" format:@"Implement this method in a sub class"];
-    return nil;
-}
+                    format:(NSString *)format ABSTRACT_METHOD
 
 @end
