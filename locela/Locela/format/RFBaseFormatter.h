@@ -17,7 +17,7 @@
 
 - (instancetype)initWithLocale:(NSLocale *)locale NS_DESIGNATED_INITIALIZER;
 
-- (BOOL)replaceFirstPlaceholderInMessage:(NSString *)message
+- (BOOL)replaceFirstPlaceholderInPattern:(NSString *)pattern
                                    match:(NSTextCheckingResult *)match
                                   values:(NSArray *)values
                                   result:(NSString **)result

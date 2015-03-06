@@ -29,6 +29,7 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 @interface RFMessageFormatter ()
 
 @property (nonatomic, strong) NSLocale *locale;
+@property (nonatomic, strong) NSString *pattern;
 
 /*
  * key: regular expression
@@ -43,6 +44,7 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 @implementation RFMessageFormatter
 
 - (instancetype)initWithLocale:(NSLocale *)locale
+                       pattern:(NSString *)pattern
 {
     self = [super init];
 
@@ -56,6 +58,8 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
         {
             _locale = locale;
         }
+
+        _pattern = pattern;
 
         _formatterClasses = @{
                 kRFMessageFormatterSimplePlaceholderPattern   : [RFStringFormatter class],
@@ -71,6 +75,21 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 
 #pragma mark -
 
+- (NSString *)format:(NSArray *)values
+{
+    NSString *result = nil;
+    NSError  *error  = nil;
+
+    [self formatMessage:self.pattern
+                 values:values
+                 result:&result
+                  error:&error];
+
+    return result;
+}
+
+#pragma mark - private
+
 - (BOOL)formatMessage:(NSString *)message
                values:(NSArray *)values
                result:(NSString **)result
@@ -81,8 +100,6 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
                                            result:result
                                             error:error];
 }
-
-#pragma mark - private
 
 - (BOOL)                findFormatter:(RFBaseFormatter **)formatter
          forFirstPlaceholderInMessage:(NSString *)message
@@ -152,7 +169,7 @@ NSString *const kRFMessageFormatterChoicePlaceholderPattern   = @"\\{\\d,\\s*cho
 
     //We have a match and a formatter. Let it do its job!
     NSString *formatResult = nil;
-    BOOL formattingOk = [formatter replaceFirstPlaceholderInMessage:message
+    BOOL formattingOk = [formatter replaceFirstPlaceholderInPattern:message
                                                               match:matchResult
                                                              values:values
                                                              result:&formatResult

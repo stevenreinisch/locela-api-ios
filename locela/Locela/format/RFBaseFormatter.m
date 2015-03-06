@@ -27,17 +27,17 @@
     return self;
 }
 
-- (BOOL)replaceFirstPlaceholderInMessage:(NSString *)message
+- (BOOL)replaceFirstPlaceholderInPattern:(NSString *)pattern
                                    match:(NSTextCheckingResult *)match
                                   values:(NSArray *)values
                                   result:(NSString **)result
                                    error:(NSError **)error
 {
-    NSAssert(message, @"Cannot format nil");
+    NSAssert(pattern, @"Cannot format nil");
     NSAssert(match,  @"Cannot format without a match");
     NSAssert(values, @"Cannot format without values");
 
-    NSString *placeholder = [message substringWithRange:match.range];
+    NSString *placeholder = [pattern substringWithRange:match.range];
     NSInteger index       = [self indexFromPlaceholder:placeholder];
     NSString *format      = [self formatFromPlaceholder:placeholder];
 
@@ -45,7 +45,7 @@
     {
         id value = values[index];
         *result = [self replaceValue:value
-                            inString:message
+                            inString:pattern
                              inRange:match.range
                               format:format];
 

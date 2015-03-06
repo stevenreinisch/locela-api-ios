@@ -44,14 +44,13 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
 
 @implementation RFMessageFormatterTest
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:currentLocale];
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
 
     [super tearDown];
 }
@@ -60,9 +59,11 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
 
 #pragma mark - initWithLocale:
 
-- (void)testInitWithLocaleNil {
+- (void)testInitWithLocaleNil
+{
 
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:nil];
 
     XCTAssertEqualObjects([NSLocale currentLocale], self.sut.locale, @"locale must be default locale if none is given");
     XCTAssertNotNil(self.sut.formatterClasses);
@@ -72,7 +73,8 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
 
     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
 
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale
+                                                  pattern:nil];
 
     XCTAssertEqualObjects(locale, self.sut.locale, @"locale must match given locale");
     XCTAssertNotNil(self.sut.formatterClasses);
@@ -82,6 +84,9 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
 
 - (void)testFormatterClassesAreCreated
 {
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:nil];
+
     XCTAssertNotNil(self.sut.formatterClasses);
 
     Class stringFormatterClass = [self.sut.formatterClasses objectForKey:kRFMessageFormatterSimplePlaceholderPattern];
@@ -107,156 +112,118 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
 
 - (void)testFormatPatternValuesOneNumber
 {
-    NSString *result = nil;
-    NSError  *error  = nil;
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:@"Hello {0, number}!"];
 
-    BOOL isFormatted = [self.sut formatMessage:@"Hello {0, number}!"
-                                        values:@[@21]
-                                        result:&result
-                                         error:&error];
-
-    XCTAssertTrue(isFormatted);
+    NSString *result = [self.sut format:@[@21]];
 
     XCTAssertEqualObjects(@"Hello 21!", result);
 }
 
 - (void)testFormatPatternValuesOneString
 {
-    NSString *result = nil;
-    NSError  *error  = nil;
-    
-    BOOL isFormatted = [self.sut formatMessage:@"Hello {0}!"
-                                        values:@[@"Klaus"]
-                                        result:&result
-                                         error:&error];
-    
-    XCTAssertTrue(isFormatted);
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:@"Hello {0}!"];
+
+    NSString *result = [self.sut format:@[@"Klaus"]];
     
     XCTAssertEqualObjects(@"Hello Klaus!", result);
 }
 
 - (void)testFormatPatternValuesTwoStringsInOrder
 {
-    NSString *result = nil;
-    NSError  *error  = nil;
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:@"Hello {0} you are {1}!"];
 
-    BOOL isFormatted = [self.sut formatMessage:@"Hello {0} you are {1}!"
-                                        values:@[@"Klaus", @"awesome"]
-                                        result:&result
-                                         error:&error];
+    NSString *result = [self.sut format:@[@"Klaus", @"awesome"]];
 
-    XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Hello Klaus you are awesome!", result);
 }
 
 - (void)testFormatPatternValuesTwoStringsNotInOrder
 {
-    NSString *result = nil;
-    NSError  *error  = nil;
-    
-    BOOL isFormatted = [self.sut formatMessage:@"Hello {1} you are {0}!"
-                                        values:@[@"Klaus", @"awesome"]
-                                        result:&result
-                                         error:&error];
-    
-    XCTAssertTrue(isFormatted);
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:@"Hello {1} you are {0}!"];
+
+    NSString *result = [self.sut format:@[@"Klaus", @"awesome"]];
+
     XCTAssertEqualObjects(@"Hello awesome you are Klaus!", result);
 }
 
 - (void)testFormatPatternValuesWithCurrency
 {
-    NSString *result = nil;
-    NSError  *error  = nil;
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:@"Please Pay {0,number,¤0.00}!"];
 
-    BOOL isFormatted = [self.sut formatMessage:@"Please Pay {0,number,¤0.00}!"
-                                        values:@[@(1.5)]
-                                        result:&result
-                                         error:&error];
+    NSString *result = [self.sut format:@[@(1.5)]];
 
-    XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Please Pay $1.50!", result);
 }
 
-- (void)testFormatPatternValuesWithCurrencyAndString {
-    NSString *result = nil;
-    NSError *error = nil;
+- (void)testFormatPatternValuesWithCurrencyAndString
+{
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:nil
+                                                  pattern:@"{0} please pay {1,number,¤0.00}!"];
 
-    BOOL isFormatted = [self.sut formatMessage:@"{0} please pay {1,number,¤0.00}!"
-                                        values:@[@"Dieter", @(1.5)]
-                                        result:&result
-                                         error:&error];
+    NSString *result = [self.sut format:@[@"Dieter", @(1.5)]];
 
-    XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Dieter please pay $1.50!", result);
 }
 
 - (void)testFormatPatternValuesWithDate
 {
-    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
-
-    NSString *result = nil;
-    NSError  *error  = nil;
-
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:1];
     [comps setMonth:10];
     [comps setYear:2010];
     NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:comps];
 
-    //call sut
-    BOOL isFormatted = [self.sut formatMessage:@"Heute ist {0,date}."
-                                        values:@[date]
-                                        result:&result
-                                         error:&error];
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
 
-    XCTAssertTrue(isFormatted);
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale
+                                                  pattern:@"Heute ist {0,date}."];
+
+    NSString *result = [self.sut format:@[date]];
+
     XCTAssertEqualObjects(@"Heute ist 01.10.2010.", result);
 }
 
 - (void)testFormatPatternValuesWithChoice
 {
     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_EN"];
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
 
-    NSString *result = nil;
-    NSError  *error  = nil;
+    NSString *pattern = @"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}.";
 
-    //call sut
-    BOOL isFormatted = [self.sut formatMessage:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
-                                        values:@[@0]
-                                        result:&result
-                                         error:&error];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale
+                                                  pattern:pattern];
 
-    XCTAssertTrue(isFormatted);
+    NSString *result = [self.sut format:@[@0]];
+
     XCTAssertEqualObjects(@"There is no file.", result);
 }
 
 - (void)testFormatPatternValuesWithChoiceAndSubPattern
 {
     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_EN"];
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
 
-    NSString *result = nil;
-    NSError  *error  = nil;
+    NSString *pattern = @"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}.";
 
-    //call sut
-    BOOL isFormatted = [self.sut formatMessage:@"There {0,choice,0#is no file|1#is one file|1<are {0,number} files}."
-                                        values:@[@10]
-                                        result:&result
-                                         error:&error];
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale
+                                                  pattern:pattern];
 
-    XCTAssertTrue(isFormatted);
+    NSString *result = [self.sut format:@[@10]];
+
     XCTAssertEqualObjects(@"There are 10 files.", result);
 }
 
 - (void)testFormatPatternValuesWithDateAndChoice
 {
     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
-    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale];
 
-    NSString *result = nil;
-    NSError  *error  = nil;
+    NSString *pattern = @"Heute ist {0,date} und die Katze hat {1,choice,1#einen Schwanz|1<{1,number} Schwänze.}";
+
+    self.sut = [[RFMessageFormatter alloc] initWithLocale:locale
+                                                  pattern:pattern];
 
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:1];
@@ -264,15 +231,8 @@ extern NSString *const kRFMessageFormatterChoicePlaceholderPattern;
     [comps setYear:2010];
     NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:comps];
 
-    NSString *pattern = @"Heute ist {0,date} und die Katze hat {1,choice,1#einen Schwanz|1<{1,number} Schwänze.}";
+    NSString *result = [self.sut format:@[date, @4]];
 
-    //call sut
-    BOOL isFormatted = [self.sut formatMessage:pattern
-                                        values:@[date, @4]
-                                        result:&result
-                                         error:&error];
-
-    XCTAssertTrue(isFormatted);
     XCTAssertEqualObjects(@"Heute ist 01.10.2010 und die Katze hat 4 Schwänze.", result);
 }
 
