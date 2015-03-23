@@ -23,8 +23,6 @@
 
 @property (nonatomic, strong)RFLocalizationPatternProvider *sut;
 
-- (NSString *)localizationPatternFileName;
-
 @end
 
 #pragma mark -
@@ -61,7 +59,7 @@
 {
     NSString *fileName = [self.sut localizationPatternFileName];
 
-    NSString *expected = [NSString stringWithFormat:@"%@", [NSLocale currentLocale]];
+    NSString *expected = [NSString stringWithFormat:@"%@", [[NSLocale currentLocale] localeIdentifier]];
 
     XCTAssertEqualObjects(expected, fileName);
 }

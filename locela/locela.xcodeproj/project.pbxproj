@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E4DC0FF1AC074370071218B /* RFLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC0FC1AC074370071218B /* RFLocalization.m */; };
+		2E4DC1001AC074370071218B /* RFLocalizationPatternProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC0FE1AC074370071218B /* RFLocalizationPatternProvider.m */; };
+		2E4DC1021AC074780071218B /* RFLocalizationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC1011AC074780071218B /* RFLocalizationTest.m */; };
+		2E4DC1041AC074C50071218B /* RFLocalizationPatternProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC1031AC074C50071218B /* RFLocalizationPatternProviderTest.m */; };
 		2EB08E331A8DDBBD00E72BB1 /* libLocela.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB08E271A8DDBBD00E72BB1 /* libLocela.a */; };
 		86CF2C075430AC73F6551701 /* libPods-LocelaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BB21729F415ABA5EBEAA70 /* libPods-LocelaTests.a */; };
 		9040B0A653DCDF95DD0234D1 /* RFTimeFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B54F8B97997B321A9DA1 /* RFTimeFormatterTest.m */; };
@@ -54,6 +58,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E4DC0FB1AC074370071218B /* RFLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocalization.h; sourceTree = "<group>"; };
+		2E4DC0FC1AC074370071218B /* RFLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalization.m; sourceTree = "<group>"; };
+		2E4DC0FD1AC074370071218B /* RFLocalizationPatternProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocalizationPatternProvider.h; sourceTree = "<group>"; };
+		2E4DC0FE1AC074370071218B /* RFLocalizationPatternProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalizationPatternProvider.m; sourceTree = "<group>"; };
+		2E4DC1011AC074780071218B /* RFLocalizationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalizationTest.m; sourceTree = "<group>"; };
+		2E4DC1031AC074C50071218B /* RFLocalizationPatternProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalizationPatternProviderTest.m; sourceTree = "<group>"; };
 		2EB08E271A8DDBBD00E72BB1 /* libLocela.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLocela.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB08E321A8DDBBD00E72BB1 /* LocelaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocelaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB08E381A8DDBBD00E72BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +149,10 @@
 		2EB08E291A8DDBBD00E72BB1 /* Locela */ = {
 			isa = PBXGroup;
 			children = (
+				2E4DC0FB1AC074370071218B /* RFLocalization.h */,
+				2E4DC0FC1AC074370071218B /* RFLocalization.m */,
+				2E4DC0FD1AC074370071218B /* RFLocalizationPatternProvider.h */,
+				2E4DC0FE1AC074370071218B /* RFLocalizationPatternProvider.m */,
 				9040BBDFCA5DDB021C65BFF8 /* format */,
 			);
 			path = Locela;
@@ -147,6 +161,8 @@
 		2EB08E361A8DDBBD00E72BB1 /* LocelaTests */ = {
 			isa = PBXGroup;
 			children = (
+				2E4DC1031AC074C50071218B /* RFLocalizationPatternProviderTest.m */,
+				2E4DC1011AC074780071218B /* RFLocalizationTest.m */,
 				2EB08E371A8DDBBD00E72BB1 /* Supporting Files */,
 				9040B23516930D46889874C4 /* NSNumberFormatterTest.m */,
 				9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */,
@@ -412,11 +428,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E4DC1001AC074370071218B /* RFLocalizationPatternProvider.m in Sources */,
 				9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */,
 				9040B8CB2DFB03BCBC3B781E /* RFBaseFormatter.m in Sources */,
 				9040B659DB12DFD5B4C58950 /* RFChoiceCondition.m in Sources */,
 				9040B7B460D174806FB7B858 /* RFChoiceFormatter.m in Sources */,
 				9040B292507D2DF8D1D4DD03 /* RFDateFormatter.m in Sources */,
+				2E4DC0FF1AC074370071218B /* RFLocalization.m in Sources */,
 				9040BF93946237723072E7C0 /* RFDatetimeFormatter.m in Sources */,
 				9040B0E02C8FA24D3110BABF /* RFTimeFormatter.m in Sources */,
 				9040B8DE8EC3414FADB6620C /* RFNumberFormatter.m in Sources */,
@@ -431,8 +449,10 @@
 			files = (
 				9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */,
 				F96098291A9DAD9600356FF1 /* RFChoiceFormatterTest.m in Sources */,
+				2E4DC1041AC074C50071218B /* RFLocalizationPatternProviderTest.m in Sources */,
 				9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */,
 				9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */,
+				2E4DC1021AC074780071218B /* RFLocalizationTest.m in Sources */,
 				9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */,
 				9040BA852955E70E870550F3 /* RFDateFormatterTest.m in Sources */,
 				9040B0A653DCDF95DD0234D1 /* RFTimeFormatterTest.m in Sources */,
