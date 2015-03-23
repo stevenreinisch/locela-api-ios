@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E4DC0FF1AC074370071218B /* RFLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC0FC1AC074370071218B /* RFLocalization.m */; };
+		2E4DC1001AC074370071218B /* RFLocalizationPatternProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC0FE1AC074370071218B /* RFLocalizationPatternProvider.m */; };
+		2E4DC1021AC074780071218B /* RFLocalizationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC1011AC074780071218B /* RFLocalizationTest.m */; };
+		2E4DC1041AC074C50071218B /* RFLocalizationPatternProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4DC1031AC074C50071218B /* RFLocalizationPatternProviderTest.m */; };
 		2EB08E331A8DDBBD00E72BB1 /* libLocela.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB08E271A8DDBBD00E72BB1 /* libLocela.a */; };
+		86CF2C075430AC73F6551701 /* libPods-LocelaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BB21729F415ABA5EBEAA70 /* libPods-LocelaTests.a */; };
 		9040B0A653DCDF95DD0234D1 /* RFTimeFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B54F8B97997B321A9DA1 /* RFTimeFormatterTest.m */; };
 		9040B0E02C8FA24D3110BABF /* RFTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BDD2809EB280F416513A /* RFTimeFormatter.m */; };
 		9040B116C7C67BFC238B4EF3 /* RFDatetimeFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B3CD11D1F9BCF88C0742 /* RFDatetimeFormatterTest.m */; };
@@ -26,6 +31,7 @@
 		9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */; };
 		9040BF81D4FDD5B2A873C046 /* RFRegExpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BD44EA02A9378CC219E5 /* RFRegExpUtil.m */; };
 		9040BF93946237723072E7C0 /* RFDatetimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B39BA9C82D22A44C408C /* RFDatetimeFormatter.m */; };
+		A9B0C34F38B3677BFF08B505 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32515F78AC051A4214653226 /* libPods.a */; };
 		F96098291A9DAD9600356FF1 /* RFChoiceFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F96098281A9DAD9600356FF1 /* RFChoiceFormatterTest.m */; };
 /* End PBXBuildFile section */
 
@@ -52,9 +58,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E4DC0FB1AC074370071218B /* RFLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocalization.h; sourceTree = "<group>"; };
+		2E4DC0FC1AC074370071218B /* RFLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalization.m; sourceTree = "<group>"; };
+		2E4DC0FD1AC074370071218B /* RFLocalizationPatternProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocalizationPatternProvider.h; sourceTree = "<group>"; };
+		2E4DC0FE1AC074370071218B /* RFLocalizationPatternProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalizationPatternProvider.m; sourceTree = "<group>"; };
+		2E4DC1011AC074780071218B /* RFLocalizationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalizationTest.m; sourceTree = "<group>"; };
+		2E4DC1031AC074C50071218B /* RFLocalizationPatternProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocalizationPatternProviderTest.m; sourceTree = "<group>"; };
 		2EB08E271A8DDBBD00E72BB1 /* libLocela.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLocela.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB08E321A8DDBBD00E72BB1 /* LocelaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocelaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB08E381A8DDBBD00E72BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32515F78AC051A4214653226 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		459B3EE5846E82885D1F23A1 /* Pods-LocelaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocelaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocelaTests/Pods-LocelaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		48A310B11FB511F4C4A00B9E /* Pods-LocelaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocelaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocelaTests/Pods-LocelaTests.release.xcconfig"; sourceTree = "<group>"; };
 		9040B05A53DA1AD47464E64B /* RFStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFStringFormatter.m; sourceTree = "<group>"; };
 		9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatterTest.m; sourceTree = "<group>"; };
 		9040B0AD6F8AD1E72662AF54 /* RFMessageFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMessageFormatter.m; sourceTree = "<group>"; };
@@ -84,6 +99,9 @@
 		9040BDD2809EB280F416513A /* RFTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTimeFormatter.m; sourceTree = "<group>"; };
 		9040BF19DBA018C7F2984AE1 /* RFBaseFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFBaseFormatter.m; sourceTree = "<group>"; };
 		9040BF9A56369CBE02972E0A /* RFChoiceFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFChoiceFormatter.m; sourceTree = "<group>"; };
+		935A1CC65AF000B718E57D4F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A3BB21729F415ABA5EBEAA70 /* libPods-LocelaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocelaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF7767B180FA1492FBAA6A1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F96098281A9DAD9600356FF1 /* RFChoiceFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFChoiceFormatterTest.m; path = locelaTests/RFChoiceFormatterTest.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -92,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B0C34F38B3677BFF08B505 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EB08E331A8DDBBD00E72BB1 /* libLocela.a in Frameworks */,
+				86CF2C075430AC73F6551701 /* libPods-LocelaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 				2EB08E291A8DDBBD00E72BB1 /* Locela */,
 				2EB08E361A8DDBBD00E72BB1 /* LocelaTests */,
 				2EB08E281A8DDBBD00E72BB1 /* Products */,
+				56051CF7EF424E4EA53DF4C8 /* Pods */,
+				C2122324DFBD61DEA8AD59D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +149,10 @@
 		2EB08E291A8DDBBD00E72BB1 /* Locela */ = {
 			isa = PBXGroup;
 			children = (
+				2E4DC0FB1AC074370071218B /* RFLocalization.h */,
+				2E4DC0FC1AC074370071218B /* RFLocalization.m */,
+				2E4DC0FD1AC074370071218B /* RFLocalizationPatternProvider.h */,
+				2E4DC0FE1AC074370071218B /* RFLocalizationPatternProvider.m */,
 				9040BBDFCA5DDB021C65BFF8 /* format */,
 			);
 			path = Locela;
@@ -135,6 +161,8 @@
 		2EB08E361A8DDBBD00E72BB1 /* LocelaTests */ = {
 			isa = PBXGroup;
 			children = (
+				2E4DC1031AC074C50071218B /* RFLocalizationPatternProviderTest.m */,
+				2E4DC1011AC074780071218B /* RFLocalizationTest.m */,
 				2EB08E371A8DDBBD00E72BB1 /* Supporting Files */,
 				9040B23516930D46889874C4 /* NSNumberFormatterTest.m */,
 				9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */,
@@ -155,6 +183,17 @@
 				2EB08E381A8DDBBD00E72BB1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56051CF7EF424E4EA53DF4C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBF7767B180FA1492FBAA6A1 /* Pods.debug.xcconfig */,
+				935A1CC65AF000B718E57D4F /* Pods.release.xcconfig */,
+				459B3EE5846E82885D1F23A1 /* Pods-LocelaTests.debug.xcconfig */,
+				48A310B11FB511F4C4A00B9E /* Pods-LocelaTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		9040B686F38E142A0D4C2743 /* datetime */ = {
@@ -225,6 +264,15 @@
 			path = format;
 			sourceTree = "<group>";
 		};
+		C2122324DFBD61DEA8AD59D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32515F78AC051A4214653226 /* libPods.a */,
+				A3BB21729F415ABA5EBEAA70 /* libPods-LocelaTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,9 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EB08E3B1A8DDBBD00E72BB1 /* Build configuration list for PBXNativeTarget "Locela" */;
 			buildPhases = (
+				587A49B79DEA7551CE243263 /* Check Pods Manifest.lock */,
 				2EB08E231A8DDBBD00E72BB1 /* Sources */,
 				2EB08E241A8DDBBD00E72BB1 /* Frameworks */,
 				2EB08E251A8DDBBD00E72BB1 /* CopyFiles */,
+				A2304E5A8EFBBB98FBE3A5C2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,9 +299,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EB08E3E1A8DDBBD00E72BB1 /* Build configuration list for PBXNativeTarget "LocelaTests" */;
 			buildPhases = (
+				78CF15DC5240F30ED16FC2B4 /* Check Pods Manifest.lock */,
 				2EB08E2E1A8DDBBD00E72BB1 /* Sources */,
 				2EB08E2F1A8DDBBD00E72BB1 /* Frameworks */,
 				2EB08E301A8DDBBD00E72BB1 /* Resources */,
+				C787216BF6B35CAA6D97B5A5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,16 +360,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		587A49B79DEA7551CE243263 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		78CF15DC5240F30ED16FC2B4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2304E5A8EFBBB98FBE3A5C2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C787216BF6B35CAA6D97B5A5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LocelaTests/Pods-LocelaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2EB08E231A8DDBBD00E72BB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E4DC1001AC074370071218B /* RFLocalizationPatternProvider.m in Sources */,
 				9040BE3AF498029D81909560 /* RFMessageFormatter.m in Sources */,
 				9040B8CB2DFB03BCBC3B781E /* RFBaseFormatter.m in Sources */,
 				9040B659DB12DFD5B4C58950 /* RFChoiceCondition.m in Sources */,
 				9040B7B460D174806FB7B858 /* RFChoiceFormatter.m in Sources */,
 				9040B292507D2DF8D1D4DD03 /* RFDateFormatter.m in Sources */,
+				2E4DC0FF1AC074370071218B /* RFLocalization.m in Sources */,
 				9040BF93946237723072E7C0 /* RFDatetimeFormatter.m in Sources */,
 				9040B0E02C8FA24D3110BABF /* RFTimeFormatter.m in Sources */,
 				9040B8DE8EC3414FADB6620C /* RFNumberFormatter.m in Sources */,
@@ -332,8 +449,10 @@
 			files = (
 				9040B9715FB7CCCEED882173 /* NSNumberFormatterTest.m in Sources */,
 				F96098291A9DAD9600356FF1 /* RFChoiceFormatterTest.m in Sources */,
+				2E4DC1041AC074C50071218B /* RFLocalizationPatternProviderTest.m in Sources */,
 				9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */,
 				9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */,
+				2E4DC1021AC074780071218B /* RFLocalizationTest.m in Sources */,
 				9040B93B9E27FA53668F1AD6 /* RFNumberFormatterTest.m in Sources */,
 				9040BA852955E70E870550F3 /* RFDateFormatterTest.m in Sources */,
 				9040B0A653DCDF95DD0234D1 /* RFTimeFormatterTest.m in Sources */,
@@ -429,8 +548,8 @@
 		};
 		2EB08E3C1A8DDBBD00E72BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBF7767B180FA1492FBAA6A1 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -438,8 +557,8 @@
 		};
 		2EB08E3D1A8DDBBD00E72BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 935A1CC65AF000B718E57D4F /* Pods.release.xcconfig */;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -447,6 +566,7 @@
 		};
 		2EB08E3F1A8DDBBD00E72BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 459B3EE5846E82885D1F23A1 /* Pods-LocelaTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -464,6 +584,7 @@
 		};
 		2EB08E401A8DDBBD00E72BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48A310B11FB511F4C4A00B9E /* Pods-LocelaTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
