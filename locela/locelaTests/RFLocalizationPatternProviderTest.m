@@ -13,7 +13,7 @@
 
 @interface RFLocalizationPatternProvider (Testing)
 
-- (NSString *)localizationPatternFileName;
+- (NSString *)localizationPatternFileNameForLocale:(NSLocale *)locale;
 
 @end
 
@@ -55,9 +55,9 @@
 
 #pragma mark - localizationPatternFileName
 
-- (void)testLocalizationPatternFileName
+- (void)testLocalizationPatternFileNameForLocale
 {
-    NSString *fileName = [self.sut localizationPatternFileName];
+    NSString *fileName = [self.sut localizationPatternFileNameForLocale:[NSLocale currentLocale]];
 
     NSString *expected = [NSString stringWithFormat:@"%@", [[NSLocale currentLocale] localeIdentifier]];
 
