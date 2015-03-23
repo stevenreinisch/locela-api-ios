@@ -1,0 +1,13 @@
+PODS:
+  - BNFParser (1.1)
+  - OCMock (3.1.2)
+
+DEPENDENCIES:
+  - BNFParser (~> 1.0)
+  - OCMock (~> 3.1.2)
+
+SPEC CHECKSUMS:
+  BNFParser: 7d3a0d3248a18f277e337f2f7c83716d044233b0
+  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
+
+COCOAPODS: 0.35.0
