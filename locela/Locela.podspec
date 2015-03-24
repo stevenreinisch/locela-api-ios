@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.name         = "Locela"
   s.version      = "0.0.1"
   s.summary      = "A new approach to localization."
-
+  s.homepage     = "https://github.com/stevenreinisch/locela-api-ios"
   s.description  = <<-DESC
                    An implementation of the [locela-api-java](https://github.com/echocat/locela-api-java) for iOS.
                    DESC
@@ -24,8 +24,11 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/stevenreinisch/locela-api-ios.git", :tag => "0.0.1" }
 
-  s.source_files  = "Locela", "Locela/**/*.{h,m}"
-
+  s.source_files  = "Locela/Locela/**/*.{h,m}"
+  s.exclude_files = "Locela/LocelaTests/"
+  
+  s.requires_arc = false
+  
   s.dependency "BNFParser", "~> 1.0"
 
 end
