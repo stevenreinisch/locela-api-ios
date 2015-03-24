@@ -25,7 +25,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/stevenreinisch/locela-api-ios.git", :tag => "0.0.1" }
 
   s.source_files  = "Locela/Locela/**/*.{h,m}"
-  s.exclude_files = "Locela/LocelaTests/"
   
   s.requires_arc = false
   
