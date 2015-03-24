@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
   s.source_files  = "Locela/Locela/**/*.{h,m}"
   
-  s.requires_arc = false
+  s.requires_arc = true
   
   s.dependency "BNFParser", "~> 1.0"
 
