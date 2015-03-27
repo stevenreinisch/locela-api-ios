@@ -20,6 +20,7 @@
 		9040B292507D2DF8D1D4DD03 /* RFDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BB3531C6AD27FA9A25EB /* RFDateFormatter.m */; };
 		9040B2A4D591502C49B82270 /* RFChoiceConditionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B67ACA0EAA738439D939 /* RFChoiceConditionTest.m */; };
 		9040B407FBABA3E57FF5B0FE /* RFMessageFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B05FBC7781126CBD7CE4 /* RFMessageFormatterTest.m */; };
+		9040B53C52572EF71936B277 /* RFHierarchicalLocalizationPatternFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BEC4C2482F3D14C1CD9C /* RFHierarchicalLocalizationPatternFinder.m */; };
 		9040B659DB12DFD5B4C58950 /* RFChoiceCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BB0A788AA0CF7F0D5682 /* RFChoiceCondition.m */; };
 		9040B7B460D174806FB7B858 /* RFChoiceFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040BF9A56369CBE02972E0A /* RFChoiceFormatter.m */; };
 		9040B850320250B92DC28A49 /* RFStringFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9040B4226A2AA2E3D691517F /* RFStringFormatterTest.m */; };
@@ -99,6 +100,7 @@
 		9040B82D28C35385FA807A30 /* RFTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFTimeFormatter.h; sourceTree = "<group>"; };
 		9040B8470B223655D3CC2F08 /* RFNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNumberFormatter.m; sourceTree = "<group>"; };
 		9040B9E2DF0294C876173B2D /* RFChoiceFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFChoiceFormatter.h; sourceTree = "<group>"; };
+		9040B9F45D797BF627DE1A41 /* RFHierarchicalLocalizationPatternFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFHierarchicalLocalizationPatternFinder.h; sourceTree = "<group>"; };
 		9040BAC4125EE845B98E51BD /* RFDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDateFormatter.h; sourceTree = "<group>"; };
 		9040BB0A788AA0CF7F0D5682 /* RFChoiceCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFChoiceCondition.m; sourceTree = "<group>"; };
 		9040BB3531C6AD27FA9A25EB /* RFDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDateFormatter.m; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		9040BD0EB9E3DE93231C3375 /* RFMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMacros.h; sourceTree = "<group>"; };
 		9040BD44EA02A9378CC219E5 /* RFRegExpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFRegExpUtil.m; sourceTree = "<group>"; };
 		9040BDD2809EB280F416513A /* RFTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTimeFormatter.m; sourceTree = "<group>"; };
+		9040BEC4C2482F3D14C1CD9C /* RFHierarchicalLocalizationPatternFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFHierarchicalLocalizationPatternFinder.m; sourceTree = "<group>"; };
 		9040BF19DBA018C7F2984AE1 /* RFBaseFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFBaseFormatter.m; sourceTree = "<group>"; };
 		9040BF9A56369CBE02972E0A /* RFChoiceFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFChoiceFormatter.m; sourceTree = "<group>"; };
 		935A1CC65AF000B718E57D4F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				9040B6948691BEDD514BB40A /* RFUtils.h */,
 				9040BCACDA838724D636F7D9 /* RFSimpleLocalizationPatternFinder.m */,
 				9040B4576CDFB9C11A1174EF /* RFSimpleLocalizationPatternFinder.h */,
+				9040BEC4C2482F3D14C1CD9C /* RFHierarchicalLocalizationPatternFinder.m */,
+				9040B9F45D797BF627DE1A41 /* RFHierarchicalLocalizationPatternFinder.h */,
 			);
 			path = Locela;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				9040BF81D4FDD5B2A873C046 /* RFRegExpUtil.m in Sources */,
 				9040BDA8396B048753C1906E /* RFBaseLocalizationPatternFinder.m in Sources */,
 				9040B1CDB2F65DC43851ED9A /* RFSimpleLocalizationPatternFinder.m in Sources */,
+				9040B53C52572EF71936B277 /* RFHierarchicalLocalizationPatternFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,6 +35,13 @@
     return keyValueMap;
 }
 
+- (NSArray *)fallbackLocalesForLocale:(NSLocale *)locale
+{
+    return nil;//TODO
+}
+
+#pragma mark - private
+
 - (NSString *)localizationPatternFileNameForLocale:(NSLocale *)locale
 {
     return [NSString stringWithFormat:@"%@", [locale localeIdentifier]];;

@@ -14,4 +14,6 @@
 
 - (NSDictionary *)patternsForLocale:(NSLocale *)locale;
 
+- (NSArray *)fallbackLocalesForLocale:(NSLocale *)locale;
+
 @end

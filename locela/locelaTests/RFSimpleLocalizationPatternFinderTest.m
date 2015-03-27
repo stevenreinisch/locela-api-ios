@@ -47,7 +47,7 @@
 
     id patternProviderMock     = OCMClassMock([RFLocalizationPatternProvider class]);
     OCMStub([patternProviderMock patternsForCurrentLocale]).andReturn(testPatterns);
-    
+
     //call sut
     self.sut = [[RFSimpleLocalizationPatternFinder alloc] initWithPatternProvider:patternProviderMock];
 
