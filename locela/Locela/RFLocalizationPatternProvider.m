@@ -15,6 +15,11 @@
 
 - (NSDictionary *)patternsForCurrentLocale
 {
+    return [self patternsForLocale:[self currentLocale]];
+}
+
+- (NSDictionary *)patternsForLocale:(NSLocale *)locale
+{
     NSString *fileName = [self localizationPatternFileNameForLocale:[self currentLocale]];
     NSString *path     = [[NSBundle mainBundle] pathForResource:fileName
                                                          ofType:@"properties"];

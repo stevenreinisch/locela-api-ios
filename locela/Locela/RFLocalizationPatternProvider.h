@@ -12,4 +12,6 @@
 
 - (NSDictionary *)patternsForCurrentLocale;
 
+- (NSDictionary *)patternsForLocale:(NSLocale *)locale;
+
 @end

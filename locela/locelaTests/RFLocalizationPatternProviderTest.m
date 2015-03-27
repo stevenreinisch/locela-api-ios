@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "RFLocalizationPatternProvider.h"
 
 #pragma mark - private declarations
@@ -62,6 +63,20 @@
     NSString *expected = [NSString stringWithFormat:@"%@", [[NSLocale currentLocale] localeIdentifier]];
 
     XCTAssertEqualObjects(expected, fileName);
+}
+
+#pragma mark -
+
+- (void)testPatternsForCurrentLocale
+{
+    id sutMock = OCMPartialMock(self.sut);
+    [[sutMock expect] patternsForLocale:[NSLocale currentLocale]];
+
+    //call sut
+    [self.sut patternsForCurrentLocale];
+
+    [sutMock verify];
+    [sutMock stopMocking];
 }
 
 @end
