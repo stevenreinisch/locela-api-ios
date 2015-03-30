@@ -20,9 +20,27 @@
 
 - (NSDictionary *)patternsForLocale:(NSLocale *)locale
 {
-    NSString *fileName = [self localizationPatternFileNameForLocale:[self currentLocale]];
-    NSString *path     = [[NSBundle mainBundle] pathForResource:fileName
-                                                         ofType:@"properties"];
+    NSString *fileName   = [self localizationPatternFileNameForLocale:locale];
+    NSDictionary *result = [self loadDictFromPropertiesFileWithName:fileName];
+    return result;
+}
+
+- (NSArray *)fallbackLocalesForLocale:(NSLocale *)locale
+{
+    return [self loadDictFromPropertiesFileWithName:@"fallbackLocales"];
+}
+
+#pragma mark - private
+
+- (NSString *)localizationPatternFileNameForLocale:(NSLocale *)locale
+{
+    return [NSString stringWithFormat:@"%@", [locale localeIdentifier]];
+}
+
+- (NSDictionary *)loadDictFromPropertiesFileWithName:(NSString *)fileName
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName
+                                                     ofType:@"properties"];
 
     NSString *text = [NSString stringWithContentsOfFile:path
                                                encoding:NSUTF8StringEncoding
@@ -33,18 +51,6 @@
 
 
     return keyValueMap;
-}
-
-- (NSArray *)fallbackLocalesForLocale:(NSLocale *)locale
-{
-    return nil;//TODO
-}
-
-#pragma mark - private
-
-- (NSString *)localizationPatternFileNameForLocale:(NSLocale *)locale
-{
-    return [NSString stringWithFormat:@"%@", [locale localeIdentifier]];;
 }
 
 @end
