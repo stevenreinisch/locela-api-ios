@@ -157,4 +157,26 @@
     [bundleMock stopMocking];
 }
 
+#pragma mark - fallbackLocalesForLocale
+
+- (void)testFallbackLocalesForLocale
+{
+    NSDictionary *fallbacks = @{ @"de_AT" : @"de_DE, en_US" };
+
+    NSLocale *currentLocale = [NSLocale localeWithLocaleIdentifier:@"de_AT"];
+
+    id sutMock = OCMPartialMock(self.sut);
+    OCMExpect([sutMock loadDictFromPropertiesFileWithName:@"fallbackLocales"]).andReturn(fallbacks);
+
+    //call sut
+    NSArray *result = [self.sut fallbackLocalesForLocale:currentLocale];
+
+    XCTAssertEqual(2, result.count);
+    XCTAssertEqualObjects(@"de_DE", [result[0] localeIdentifier]);
+    XCTAssertEqualObjects(@"en_US", [result[1] localeIdentifier]);
+
+    [sutMock verify];
+    [sutMock stopMocking];
+}
+
 @end

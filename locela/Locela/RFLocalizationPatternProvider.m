@@ -27,7 +27,18 @@
 
 - (NSArray *)fallbackLocalesForLocale:(NSLocale *)locale
 {
-    return [self loadDictFromPropertiesFileWithName:@"fallbackLocales"];
+    NSDictionary *allFallbacks = [self loadDictFromPropertiesFileWithName:@"fallbackLocales"];
+    NSString *fallbacksString  = allFallbacks[locale.localeIdentifier];
+    NSArray *localeIdentifiers = [fallbacksString componentsSeparatedByString:@","];
+    NSMutableArray *locales    = [NSMutableArray arrayWithCapacity:localeIdentifiers.count];
+
+    for (NSString *id in localeIdentifiers)
+    {
+        NSString *trimmed = [id stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [locales addObject:[NSLocale localeWithLocaleIdentifier:trimmed]];
+    }
+
+    return [NSArray arrayWithArray:locales];
 }
 
 #pragma mark - private
