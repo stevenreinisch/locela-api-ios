@@ -16,6 +16,7 @@
 
 - (NSString *)localizationPatternFileNameForLocale:(NSLocale *)locale;
 - (NSDictionary *)loadDictFromPropertiesFileWithName:(NSString *)fileName;
+- (NSString *)contentsOfFile:(NSString *)fileName;
 
 @end
 
@@ -102,9 +103,58 @@
 
 #pragma mark - loadDictFromPropertiesFileWithName
 
+- (void)testLoadDictFromPropertiesFileWithNameNil
+{
+    NSDictionary *result = [self.sut loadDictFromPropertiesFileWithName:nil];
+
+    XCTAssertNil(result);
+}
+
+- (void)testLoadDictFromPropertiesFileWithNameResourceExistsButErroneousContent
+{
+    NSString *testFileName = @"testFile";
+
+    //pretend that there is no such resource
+    id sutMock = OCMPartialMock(self.sut);
+    OCMExpect([sutMock contentsOfFile:testFileName]).andReturn(nil);
+
+    NSDictionary *result = [self.sut loadDictFromPropertiesFileWithName:testFileName];
+
+    XCTAssertNil(result);
+    [sutMock verify];
+    [sutMock stopMocking];
+}
+
 - (void)testLoadDictFromPropertiesFileWithName
 {
-    XCTFail(@"not done yet");
+    NSString *testFileName    = @"testFile";
+    NSString *testFileContent = @"key = value";
+
+    //pretend that there is no such resource
+    id sutMock = OCMPartialMock(self.sut);
+    OCMExpect([sutMock contentsOfFile:testFileName]).andReturn(testFileContent);
+
+    NSDictionary *result = [self.sut loadDictFromPropertiesFileWithName:testFileName];
+
+    XCTAssertNotNil(result);
+    XCTAssertEqualObjects(@{ @"key" : @"value" }, result);
+    [sutMock verify];
+    [sutMock stopMocking];
+}
+
+#pragma mark - contentsOfFile
+
+- (void)testContentsOfFileNoSuchFileResource
+{
+    //pretend that there is no such resource
+    id bundleMock = OCMClassMock([NSBundle class]);
+    OCMStub([bundleMock pathForResource:OCMOCK_ANY ofType:OCMOCK_ANY]).andReturn(nil);
+    OCMStub([NSBundle mainBundle]).andReturn(bundleMock);
+
+    NSString *result = [self.sut contentsOfFile:@"notExistingFile"];
+
+    XCTAssertNil(result);
+    [bundleMock stopMocking];
 }
 
 @end
